@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  mchenava < mchenava@student.42lyon.fr>    +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:48:34 by bfaure            #+#    #+#             */
-/*   Updated: 2023/11/15 13:24:14 by  mchenava        ###   ########.fr       */
+/*   Updated: 2024/01/08 20:14:39 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static size_t	ft_intlen(long nb)
 	return (len);
 }
 
-char	*ft_itoa(t_sh_context *shx, int n)
+char	*ft_itoa(t_cub_context *cubx, int n)
 {
 	char	*str;
 	size_t	len;

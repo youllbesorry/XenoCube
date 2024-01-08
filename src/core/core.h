@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   core.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 21:05:32 by bfaure            #+#    #+#             */
-/*   Updated: 2022/11/17 21:05:32 by bfaure           ###   ########lyon.fr   */
+/*   Created: 2024/01/08 19:58:12 by bfaure            #+#    #+#             */
+/*   Updated: 2024/01/08 19:58:12 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#ifndef CORE_H
+# define CORE_H
 
-static char	*ft_strcpy(char *dst, const char *src)
+# include "../../xenocub.h"
+
+struct s_cub_context
 {
-	size_t	i;
+    t_garbage_collector		*gc;
+	t_cub_window			*window;
+	t_cub_map				*map;
+	t_cub_player			*player;
+	t_cub_ray				*ray;
+	t_cub_image				*image;
+};
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-char	*ft_strdup(t_cub_context *cubx, const char *str)
-{
-	char	*dest;
-
-	dest = gc_malloc(shx, sizeof(char) * (ft_strlen(str) + 1), false);
-	if (!dest)
-		return (NULL);
-	return (ft_strcpy(dest, str));
-}
+#endif

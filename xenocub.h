@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   xenocub.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 21:05:32 by bfaure            #+#    #+#             */
-/*   Updated: 2022/11/17 21:05:32 by bfaure           ###   ########lyon.fr   */
+/*   Created: 2024/01/08 19:16:54 by bfaure            #+#    #+#             */
+/*   Updated: 2024/01/08 19:16:54 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#ifndef XENOCUB_H
+# define XENOCUB_H
 
-static char	*ft_strcpy(char *dst, const char *src)
-{
-	size_t	i;
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <math.h>
+# include "src/utils/garbage_collector/garbage.h"
+# include "src/core/core.h"
+# include "src/type/type.h"
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-char	*ft_strdup(t_cub_context *cubx, const char *str)
-{
-	char	*dest;
-
-	dest = gc_malloc(shx, sizeof(char) * (ft_strlen(str) + 1), false);
-	if (!dest)
-		return (NULL);
-	return (ft_strcpy(dest, str));
-}
+#endif

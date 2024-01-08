@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   gc_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 21:05:32 by bfaure            #+#    #+#             */
-/*   Updated: 2022/11/17 21:05:32 by bfaure           ###   ########lyon.fr   */
+/*   Created: 2024/01/08 19:53:13 by bfaure            #+#    #+#             */
+/*   Updated: 2024/01/08 19:53:13 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "garbage.h"
 
-static char	*ft_strcpy(char *dst, const char *src)
+t_uint	init_gc(t_cub_context *cubx)
 {
-	size_t	i;
+	t_garbage_collector	*gc;
 
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
-}
-
-char	*ft_strdup(t_cub_context *cubx, const char *str)
-{
-	char	*dest;
-
-	dest = gc_malloc(shx, sizeof(char) * (ft_strlen(str) + 1), false);
-	if (!dest)
-		return (NULL);
-	return (ft_strcpy(dest, str));
+	gc = (t_garbage_collector *)malloc(sizeof(t_garbage_collector));
+	if (!gc)
+		return (handle_error(MALLOC_FAIL, NULL));
+	gc->free = gc_free;
+	gc->malloc = gc_malloc;
+	gc->ptrs = NULL;
+	gc->nb_ptrs = 0;
+	shx->gc = gc;
+	return (CONTINUE_PROC);
 }

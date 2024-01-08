@@ -6,13 +6,13 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:04:17 by bfaure            #+#    #+#             */
-/*   Updated: 2023/09/07 14:36:36 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/08 20:14:39 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/libft.h"
 
-char	*ft_strtrim(t_sh_context *shx, char const *s1, char const *set)
+char	*ft_strtrim(t_cub_context *cubx, char const *s1, char const *set)
 {
 	size_t	len;
 

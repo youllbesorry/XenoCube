@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-char	*ft_strfjoin(t_sh_context *shx, char *s1, char *s2)
+char	*ft_strfjoin(t_cub_context *cubx, char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -33,7 +33,7 @@ char	*ft_strfjoin(t_sh_context *shx, char *s1, char *s2)
 	return (shx->gc->free(shx, s1), str);
 }
 
-char	*ft_strnjoin(t_sh_context *shx, char *s1, char *s2, ssize_t n)
+char	*ft_strnjoin(t_cub_context *cubx, char *s1, char *s2, ssize_t n)
 {
 	char	*str;
 	int		i;

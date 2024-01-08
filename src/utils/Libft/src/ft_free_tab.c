@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:39:27 by bfaure            #+#    #+#             */
-/*   Updated: 2023/09/08 14:07:06 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/08 20:14:39 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_free_tab_len(char **strs, int len)
 	return ;
 }
 
-void	ft_free_tab(t_sh_context *shx, char **strs)
+void	ft_free_tab(t_cub_context *cubx, char **strs)
 {
 	size_t	i;
 

@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-char	*ft_strjoin(t_sh_context *shx, char *s1, char *s2)
+char	*ft_strjoin(t_cub_context *cubx, char *s1, char *s2)
 {
 	char	*str;
 	size_t	i;

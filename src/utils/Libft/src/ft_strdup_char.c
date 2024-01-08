@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:20:27 by bfaure            #+#    #+#             */
-/*   Updated: 2023/09/07 14:34:34 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/08 20:14:39 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char	*ft_strcpy(char *dst, const char *src, char c)
 	return (dst);
 }
 
-char	*ft_strdup_char(t_sh_context *shx, const char *str, char c)
+char	*ft_strdup_char(t_cub_context *cubx, const char *str, char c)
 {
 	char	*dest;
 

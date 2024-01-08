@@ -51,7 +51,7 @@ static int	ft_count_words(char const *str, char sep)
 	return (count);
 }
 
-static char	**ft_str_cut(t_sh_context *shx,
+static char	**ft_str_cut(t_cub_context *cubx,
 	char **dest, char const *src, char sep)
 {
 	int	i;
@@ -80,7 +80,7 @@ static char	**ft_str_cut(t_sh_context *shx,
 	return (dest);
 }
 
-char	**ft_split(t_sh_context *shx, char const *s, char c)
+char	**ft_split(t_cub_context *cubx, char const *s, char c)
 {
 	char	**tabx;
 

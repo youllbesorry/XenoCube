@@ -29,7 +29,7 @@ static char	*ft_cpy(char *dst, const char *src, unsigned int start, size_t len)
 	return (dst);
 }
 
-char	*ft_substr(t_sh_context *shx, char const *s,
+char	*ft_substr(t_cub_context *cubx, char const *s,
 	unsigned int start, size_t len)
 {
 	char	*dest;
