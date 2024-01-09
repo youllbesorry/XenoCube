@@ -18,7 +18,7 @@ char	*ft_strfjoin(t_cub_context *cubx, char *s1, char *s2)
 	int		i;
 	int		j;
 
-	str = shx->gc->malloc(shx, sizeof(char) * (ft_strlen(s1)
+	str = cubx->gc->malloc(cubx, sizeof(char) * (ft_strlen(s1)
 				+ ft_strlen(s2)) + 1, true);
 	if (!str)
 		return (NULL);
@@ -30,7 +30,7 @@ char	*ft_strfjoin(t_cub_context *cubx, char *s1, char *s2)
 	while (s2 && s2[i])
 		str[j++] = s2[i++];
 	str[j] = '\0';
-	return (shx->gc->free(shx, s1), str);
+	return (cubx->gc->free(cubx, s1), str);
 }
 
 char	*ft_strnjoin(t_cub_context *cubx, char *s1, char *s2, ssize_t n)
@@ -39,7 +39,7 @@ char	*ft_strnjoin(t_cub_context *cubx, char *s1, char *s2, ssize_t n)
 	int		i;
 	int		j;
 
-	str = shx->gc->malloc(shx, sizeof(char) * (ft_strlen(s1)
+	str = cubx->gc->malloc(cubx, sizeof(char) * (ft_strlen(s1)
 				+ ft_strlen(s2)) + 1, true);
 	if (!str)
 		return (NULL);
@@ -51,5 +51,5 @@ char	*ft_strnjoin(t_cub_context *cubx, char *s1, char *s2, ssize_t n)
 	while (s2 && s2[i] && i < n)
 		str[j++] = s2[i++];
 	str[j] = '\0';
-	return (shx->gc->free(shx, s1), str);
+	return (cubx->gc->free(cubx, s1), str);
 }

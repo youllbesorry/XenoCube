@@ -18,11 +18,11 @@ t_uint	init_gc(t_cub_context *cubx)
 
 	gc = (t_garbage_collector *)malloc(sizeof(t_garbage_collector));
 	if (!gc)
-		return (handle_error(MALLOC_FAIL, NULL));
+		return (MALLOC_FAIL);
 	gc->free = gc_free;
 	gc->malloc = gc_malloc;
 	gc->ptrs = NULL;
 	gc->nb_ptrs = 0;
-	shx->gc = gc;
+	cubx->gc = gc;
 	return (CONTINUE_PROC);
 }

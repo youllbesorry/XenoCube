@@ -23,7 +23,7 @@ void	*gc_malloc(t_cub_context *cubx, size_t size, bool count)
 	new_ptr->ptr = malloc(size);
 	if (!new_ptr->ptr)
 		return (NULL);
-	gc = shx->gc;
+	gc = cubx->gc;
 	new_ptr->size = size;
 	new_ptr->counted = count;
 	new_ptr->next = NULL;
@@ -45,7 +45,7 @@ void	gc_free(t_cub_context *cubx, void *ptr)
 	t_ptr				*curr;
 	t_garbage_collector	*gc;
 
-	gc = shx->gc;
+	gc = cubx->gc;
 	prev = NULL;
 	curr = gc->ptrs;
 	while (curr)
@@ -74,7 +74,7 @@ void	gc_free_all(t_cub_context *cubx)
 	t_ptr				*top;
 	t_garbage_collector	*gc;
 
-	gc = shx->gc;
+	gc = cubx->gc;
 	ptrs = gc->ptrs;
 	top = ptrs;
 	while (ptrs)

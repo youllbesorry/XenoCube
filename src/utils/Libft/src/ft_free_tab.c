@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 16:39:27 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/08 20:14:39 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 13:42:31 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	ft_free_tab(t_cub_context *cubx, char **strs)
 	i = 0;
 	while (strs[i])
 	{
-		shx->gc->free(shx, strs[i]);
+		cubx->gc->free(cubx, strs[i]);
 		i++;
 	}
-	shx->gc->free(shx, strs);
+	cubx->gc->free(cubx, strs);
 	return ;
 }

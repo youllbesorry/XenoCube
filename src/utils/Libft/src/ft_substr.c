@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../minish.h"
+#include "../headers/libft.h"
 
 static char	*ft_cpy(char *dst, const char *src, unsigned int start, size_t len)
 {
@@ -37,11 +37,11 @@ char	*ft_substr(t_cub_context *cubx, char const *s,
 	if (!s)
 		return (NULL);
 	if (start > ft_strlen(s))
-		return (ft_strdup(shx, ""));
+		return (ft_strdup(cubx, ""));
 	if (len < ft_strlen(&s[start]))
-		dest = shx->gc->malloc(shx, sizeof(char) * (len + 1), false);
+		dest = cubx->gc->malloc(cubx, sizeof(char) * (len + 1), false);
 	else
-		dest = shx->gc->malloc(shx, sizeof(char)
+		dest = cubx->gc->malloc(cubx, sizeof(char)
 				* (ft_strlen(&s[start]) + 1), false);
 	if (!dest)
 		return (NULL);

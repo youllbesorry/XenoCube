@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:20:27 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/08 20:14:39 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 13:42:31 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strdup_char(t_cub_context *cubx, const char *str, char c)
 {
 	char	*dest;
 
-	dest = shx->gc->malloc(shx, sizeof(char) * (ft_strlen(str) + 1), false);
+	dest = cubx->gc->malloc(cubx, sizeof(char) * (ft_strlen(str) + 1), false);
 	if (!dest)
 		return (NULL);
 	return (ft_strcpy(dest, str, c));

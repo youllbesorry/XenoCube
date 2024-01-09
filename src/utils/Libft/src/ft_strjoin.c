@@ -18,7 +18,7 @@ char	*ft_strjoin(t_cub_context *cubx, char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 
-	str = shx->gc->malloc(shx, sizeof(char) * (ft_strlen(s1)
+	str = cubx->gc->malloc(cubx, sizeof(char) * (ft_strlen(s1)
 				+ ft_strlen(s2) + 1), true);
 	if (!str)
 		return (0);

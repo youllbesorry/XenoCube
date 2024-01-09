@@ -10,9 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocub.h"
+#include "../../xenocube.h"
 
-void    init_cub_context(t_cub_context *cubx)
+void	init_cub_context(t_cub_context *cubx)
 {
-    void
+	(void)cubx;
+	return ;
 }

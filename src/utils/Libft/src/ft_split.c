@@ -67,10 +67,10 @@ static char	**ft_str_cut(t_cub_context *cubx,
 		j = i;
 		while (src[j] && src[j] != sep)
 			j++;
-		dest[k] = shx->gc->malloc(shx, sizeof(char)
+		dest[k] = cubx->gc->malloc(cubx, sizeof(char)
 				* (j - i + 1), false);
 		if (!dest[k])
-			return (ft_free_tab(shx, dest), NULL);
+			return (ft_free_tab(cubx, dest), NULL);
 		j = 0;
 		while (src[i] && src[i] != sep)
 			dest[k][j++] = src[i++];
@@ -84,9 +84,9 @@ char	**ft_split(t_cub_context *cubx, char const *s, char c)
 {
 	char	**tabx;
 
-	tabx = shx->gc->malloc(shx, sizeof(char *)
+	tabx = cubx->gc->malloc(cubx, sizeof(char *)
 			* (ft_count_words(s, c) + 1), false);
 	if (!tabx)
 		return (NULL);
-	return (ft_str_cut(shx, tabx, s, c));
+	return (ft_str_cut(cubx, tabx, s, c));
 }

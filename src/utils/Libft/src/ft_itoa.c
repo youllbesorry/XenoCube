@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 16:48:34 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/08 20:14:39 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 13:42:31 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_itoa(t_cub_context *cubx, int n)
 	nb = n;
 	len = ft_intlen(nb);
 	i = len;
-	str = gc_malloc(shx, sizeof(char) * len + 1, false);
+	str = gc_malloc(cubx, sizeof(char) * len + 1, false);
 	if (!str)
 		return (NULL);
 	if (nb == 0)

@@ -6,14 +6,14 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:50:15 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/08 20:18:35 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/09 13:58:54 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "../../../../xenocub.h"
+# include "../../../../xenocube.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
@@ -70,8 +70,5 @@ char		*ft_substr(t_cub_context *cubx, char const *s,
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 size_t		ft_strcspn(const char *s, const char *reject);
-
-long long	ft_atoll(const char *str);
-long long	ft_strtoll(const char *str);
 
 #endif

@@ -24,11 +24,19 @@ LIBMLX		=	libmlx.a
 
 DIR_OBJS	=	.objs/
 
-DIR_SRCS	=	./src/
+DIR_SRCS	=	src/
+
+DIR_UTILS	=	${DIR_SRCS}utils/
+
+DIR_GARBAGE	=	${DIR_UTILS}garbage_collector/
+
+DIR_CORE	=	${DIR_SRCS}core/
+
+DIR_PARS	= 	${DIR_SRCS}parsing/
 
 DIR_MLX		=	minilibx-linux/
 
-DIR_LIBFT	=	${DIR_SRCS}utils/Libft/
+DIR_LIBFT	=	${DIR_UTILS}Libft/
 
 LIBFT_A = $(DIR_LIBFT)$(LIBFT)
 
@@ -36,12 +44,13 @@ MLXLIB_A = $(DIR_MLX)$(LIBMLX)
 
 # ---- Files ---- #
 
-SRCS			=	main.c /
-					utils/garbage_collector/gc_fonc.c /
-					utils/garbage_collector/gc_init.c /
+SRCS			=	main.c \
+					${DIR_GARBAGE}gc_fonc.c \
+					${DIR_GARBAGE}gc_init.c \
+					${DIR_CORE}init_ctx.c \
 
 
-OBJS = ${SRCS:%.c=${DIR_OBJS}%.o}
+OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
 
 DEPS = ${SRCS:%.c=${DIR_OBJS}%.d}
 
@@ -73,22 +82,26 @@ $(MLXLIB_A): force
 # ---- Variables Rules ---- #
 
 ${NAME}	:	${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -L${DIR_MLX}
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -L${DIR_MLX} -lm
 
 # ---- Compiled Rules ---- #
 
 -include ${DEPS}
 
-${DIR_OBJS}%.o	:	${DIR_SRCS}%.c $(LIBFT_A) $(MLXLIB_A)
-					@${MKDIR} $(shell dirname $@) #${DIR_OBJS}
-					${CC} ${CFLAGS} -I $(DIR_LIBFT) -I ${DIR_MLX} -c $< -o $@
+${DIR_OBJS}%.o	:	%.c $(LIBFT_A) $(MLXLIB_A)
+					$(MKDIR) $(shell dirname $@)
+					${CC} ${CFLAGS}  -c $< -o $@ -I $(DIR_LIBFT) -I ${DIR_MLX} -Iminilibx -Ilibft
 
 # ---- Usual Commands ---- #
+
+fclean_lib		:
+					make fclean -C ${DIR_LIBFT}
+					make clean -C ${DIR_MLX}
 
 clean			:
 					${RM} ${DIR_OBJS}
 
-fclean			:	clean
+fclean			:	clean fclean_lib
 					${RM} ${NAME}
 
 re				:	fclean

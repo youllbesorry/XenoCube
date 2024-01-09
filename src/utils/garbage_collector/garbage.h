@@ -13,7 +13,7 @@
 #ifndef GARBAGE_H
 # define GARBAGE_H
 
-# include "../../../headers/xenocub.h"
+# include "../../../xenocube.h"
 
 struct s_garbage_collector
 {
