@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_init.c                                         :+:      :+:    :+:   */
+/*   win_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:29:43 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/10 18:33:50 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/10 21:06:06 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ t_uint	win_init(t_cub_context *cubx, int win_w, int win_h)
 	// new_img(cubx, &(cubx->win.renderer), cubx->win.w, cubx->win.h);
 	// if (!cubx->win.renderer.img)
 	// 	return (MLX_NEW_WIN_FAIL);
-	return (0);
+	return (CONTINUE_PROC);
 }

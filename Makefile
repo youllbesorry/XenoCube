@@ -63,7 +63,9 @@ SRCS			=	main.c \
 					${DIR_GARBAGE}gc_init.c \
 					${DIR_CORE}init_ctx.c \
 					${DIR_PARS}pars_graphic_path.c \
-					${DIR_CORE}mlx_init.c \
+					${DIR_CORE}win_init.c \
+					${DIR_PARS}create_tab_map.c \
+					${DIR_PARS}check_map.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
@@ -76,7 +78,7 @@ DEPS_FLAGS = -MMD -MP
 
 CC		=	cc
 
-CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -I xenocube.h
+CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror 
 
 # ---- Commands ---- #
 
@@ -98,7 +100,7 @@ $(MLXLIB_A): force
 # ---- Variables Rules ---- #
 
 ${NAME}	:	${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft -L${DIR_MLX} -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz || ${MAKE} sus
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft -L${DIR_MLX} -lmlx_Linux -L/usr/lib -Iminilibx -lXext -lX11 -lm -lz || ${MAKE} sus
 
 # ---- Compiled Rules ---- #
 

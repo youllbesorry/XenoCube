@@ -15,7 +15,7 @@
 int	main(int argc, char **argv)
 {
 	t_cub_context	cubx;
-	t_uint 			status;
+	t_uint			status;
 
 	status = 0;
 	if (argc != 2)
@@ -32,10 +32,9 @@ int	main(int argc, char **argv)
 		}
 		if (init_cub_context(&cubx) != CONTINUE_PROC)
 		{
-			printf("Error\nMalloc fail\n");
+			printf("Error\nCub_context_init fail\n");
 			return (0);
 		}
-		printf("Path: %s\n", argv[1]);
 		status = pars_file(&cubx, argv[1]);
 		if (status != CONTINUE_PROC)
 		{
@@ -45,15 +44,11 @@ int	main(int argc, char **argv)
 				printf("Error\nYou've try to fuck with me");
 			return (0);
 		}
-		else
+		if (check_hole_map(&cubx) != CONTINUE_PROC)
 		{
-			// printf("Path NO: %s\n", cubx.path.path_n);
-			printf("Path SO: %s\n", cubx.path.path_s);
-			printf("Path WE: %s\n", cubx.path.path_w);
-			printf("Path EA: %s\n", cubx.path.path_e);
-			printf("Color F: %d, %d, %d\n", cubx.color_f.r, cubx.color_f.g, cubx.color_f.b);
-			printf("Color C: %d, %d, %d\n", cubx.color_c.r, cubx.color_c.g, cubx.color_c.b);
-			// printf("Map: %s\n", cubx.map);
+			printf("Error\nMap error\n");
+			return (0);
 		}
-	}	return (0);
+	}
+	return (0);
 }

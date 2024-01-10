@@ -15,7 +15,7 @@
 t_uint	init_cub_context(t_cub_context *cubx)
 {
 	if (init_gc(cubx) != CONTINUE_PROC)
-		return (MALLOC_FAIL);
+		return (CUB_CONTEXT_INIT_FAIL);
 	// ft_bzero(cubx, sizeof(t_cub_context));
 	// cubx->color_f = (t_cub_textures *)malloc(sizeof(t_cub_color));
 	// if (cubx->color_f == NULL)

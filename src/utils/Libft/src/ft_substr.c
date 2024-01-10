@@ -19,7 +19,7 @@ static char	*ft_cpy(char *dst, const char *src, unsigned int start, size_t len)
 	i = 0;
 	if (!dst || !src)
 		return (NULL);
-	while (src[start] != '\0' && i < len)
+	while ((src[start] != '\0' && !ft_isspace(src[start])) && i < len)
 	{
 		dst[i] = src[start];
 		i++;

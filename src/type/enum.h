@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:50:37 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/10 14:44:22 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/10 23:21:56 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ enum e_error
 	MLX_NEW_IMG_FAIL,
 	CONTINUE_PROC,
 	STOP_PROC,
+	MAP_ERROR,
+	BAD_FD,
+	IMG_INIT_FAIL,
 	DONT_FUCK_WITH_ME,
+	CUB_CONTEXT_INIT_FAIL,
 };
 
 #endif

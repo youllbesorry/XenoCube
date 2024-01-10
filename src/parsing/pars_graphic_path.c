@@ -16,38 +16,40 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 {
 	int		fd;
 	t_str	line;
-	t_uint	ret;
 	t_uint	status;
 
-	ret = 0;
 	fd = open(path, O_RDONLY);
-	printf("fd: %d\n", fd);
 	if (fd == -1)
-		return (MALLOC_FAIL);
+		return (BAD_FD);
 	line = get_next_line(fd);
+	if (line == NULL)
+		return (MALLOC_FAIL);
 	status = CONTINUE_PROC;
 	while (line != NULL)
 	{
-		printf("line: %s\n", line);
 		if (line[0] == 'N' && line[1] == 'O')
 		{
-			if (pars_graphic_path(cubx, line, fd) != CONTINUE_PROC)
-				return (MALLOC_FAIL);
+			status = pars_graphic_path(cubx, line, fd);
+			if (status != CONTINUE_PROC)
+				return (status);
 		}
 		else if (line[0] == 'S' && line[1] == 'O')
 		{
-			if (pars_graphic_path(cubx, line, fd) != CONTINUE_PROC)
-				return (MALLOC_FAIL);
+			status = pars_graphic_path(cubx, line, fd);
+			if (status != CONTINUE_PROC)
+				return (status);
 		}
 		else if (line[0] == 'W' && line[1] == 'E')
 		{
-			if (pars_graphic_path(cubx, line, fd) != CONTINUE_PROC)
-				return (MALLOC_FAIL);
+			status = pars_graphic_path(cubx, line, fd);
+			if (status != CONTINUE_PROC)
+				return (status);
 		}
 		else if (line[0] == 'E' && line[1] == 'A')
 		{
-			if (pars_graphic_path(cubx, line, fd) != CONTINUE_PROC)
-				return (MALLOC_FAIL);
+			status = pars_graphic_path(cubx, line, fd);
+			if (status != CONTINUE_PROC)
+				return (status);
 		}
 		else if (line[0] == 'F')
 		{
@@ -61,13 +63,12 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 			if (status != CONTINUE_PROC)
 				return (status);
 		}
-		else if (line[0] == '\0')
-			ret++;
-		else
-			ret = 0;
 		free(line);
 		line = get_next_line(fd);
 	}
+	close(fd);
+	if (pars_map(cubx, path) != CONTINUE_PROC)
+		return (MALLOC_FAIL);
 	return (CONTINUE_PROC);
 }
 
@@ -83,6 +84,8 @@ t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd)
 		if (line[i] == '\n')
 		{
 			line = get_next_line(fd);
+			if (line == NULL)
+				return (MALLOC_FAIL);
 			i = 0;
 			continue ;
 		}
@@ -90,33 +93,39 @@ t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd)
 	}
 	if (flag == 0)
 	{
-		// cubx->path.path_n = ft_substr(cubx, line, i, ft_strlen(line));
 		path = ft_substr(cubx, line, i, ft_strlen(line));
 		cubx->textures.img_n.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
 				&(cubx->win.renderer.img_h));
-		printf("path: %s\n", path);
 		cubx->gc->free(cubx, path);
-		printf("img: %p\n", cubx->textures.img_n.img);
 		if (cubx->textures.img_n.img == NULL)
-			return (MALLOC_FAIL);
+			return (IMG_INIT_FAIL);
 	}
 	else if (flag == 1)
 	{
-		cubx->path.path_s = ft_substr(cubx, line, i, ft_strlen(line));
-		if (cubx->path.path_s == NULL)
-			return (MALLOC_FAIL);
+		path = ft_substr(cubx, line, i, ft_strlen(line));
+		cubx->textures.img_s.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
+				&(cubx->win.renderer.img_h));
+		cubx->gc->free(cubx, path);
+		if (cubx->textures.img_s.img == NULL)
+			return (IMG_INIT_FAIL);
 	}
 	else if (flag == 2)
 	{
-		cubx->path.path_w = ft_substr(cubx, line, i, ft_strlen(line));
-		if (cubx->path.path_w == NULL)
-			return (MALLOC_FAIL);
+		path = ft_substr(cubx, line, i, ft_strlen(line));
+		cubx->textures.img_w.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
+				&(cubx->win.renderer.img_h));
+		cubx->gc->free(cubx, path);
+		if (cubx->textures.img_w.img == NULL)
+			return (IMG_INIT_FAIL);
 	}
 	else if (flag == 3)
 	{
-		cubx->path.path_e = ft_substr(cubx, line, i, ft_strlen(line));
-		if (cubx->path.path_e == NULL)
-			return (MALLOC_FAIL);
+		path = ft_substr(cubx, line, i, ft_strlen(line));
+		cubx->textures.img_e.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
+				&(cubx->win.renderer.img_h));
+		cubx->gc->free(cubx, path);
+		if (cubx->textures.img_e.img == NULL)
+			return (IMG_INIT_FAIL);
 	}
 	flag++;
 	return (CONTINUE_PROC);
@@ -127,7 +136,7 @@ t_uint	pars_color(t_cub_context *cubx, t_str line, int bg, int fd)
 	t_str			*color;
 
 	line++;
-	while (ft_isspace((int)*line))
+	while (ft_isspace((int)*line) && line != NULL)
 	{
 		if (*line == '\n')
 		{
