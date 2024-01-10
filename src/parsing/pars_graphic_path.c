@@ -23,7 +23,7 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 	fd = open(path, O_RDONLY);
 	printf("fd: %d\n", fd);
 	if (fd == -1)
-		return (ret);
+		return (MALLOC_FAIL);
 	line = get_next_line(fd);
 	status = CONTINUE_PROC;
 	while (line != NULL)
@@ -68,13 +68,14 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 		free(line);
 		line = get_next_line(fd);
 	}
-	return (ret);
+	return (CONTINUE_PROC);
 }
 
 t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd)
 {
 	t_uint			i;
 	static t_uint	flag = 0;
+	t_str			path;
 
 	i = 2;
 	while (ft_isspace(line[i]))
@@ -89,8 +90,14 @@ t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd)
 	}
 	if (flag == 0)
 	{
-		cubx->path.path_n = ft_substr(cubx, line, i, ft_strlen(line));
-		if (cubx->path.path_n == NULL)
+		// cubx->path.path_n = ft_substr(cubx, line, i, ft_strlen(line));
+		path = ft_substr(cubx, line, i, ft_strlen(line));
+		cubx->textures.img_n.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
+				&(cubx->win.renderer.img_h));
+		printf("path: %s\n", path);
+		cubx->gc->free(cubx, path);
+		printf("img: %p\n", cubx->textures.img_n.img);
+		if (cubx->textures.img_n.img == NULL)
 			return (MALLOC_FAIL);
 	}
 	else if (flag == 1)

@@ -25,6 +25,11 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
+		if (win_init(&cubx, 1920, 1080) != CONTINUE_PROC)
+		{
+			printf("Error\nmlx init fail\n");
+			return (0);
+		}
 		if (init_cub_context(&cubx) != CONTINUE_PROC)
 		{
 			printf("Error\nMalloc fail\n");
@@ -42,7 +47,7 @@ int	main(int argc, char **argv)
 		}
 		else
 		{
-			printf("Path NO: %s\n", cubx.path.path_n);
+			// printf("Path NO: %s\n", cubx.path.path_n);
 			printf("Path SO: %s\n", cubx.path.path_s);
 			printf("Path WE: %s\n", cubx.path.path_w);
 			printf("Path EA: %s\n", cubx.path.path_e);

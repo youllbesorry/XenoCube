@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
+# include "minilibx-linux/mlx.h"
 # include "src/type/type.h"
 # include "src/utils/Libft/headers/libft.h"
 # include "src/utils/Libft/headers/get_next_line.h"

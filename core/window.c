@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 14:14:03 by jcoquard          #+#    #+#             */
-/*   Updated: 2023/12/15 15:15:27 by liurne           ###   ########.fr       */
+/*   Updated: 2024/01/10 18:36:46 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ int	init_window(t_data *cub, int win_w, int win_h)
 	ft_bzero(cub, sizeof(t_data));
 	cub->win.w = win_w;
 	cub->win.h = win_h;
-	cub->win.mlx = mlx_init();
+	// cub->win.mlx = mlx_init();
 	if (!cub->win.mlx)
 		error(cub, ERR_MLX);
-	cub->win.win = mlx_new_window(cub->win.mlx, cub->win.w, cub->win.h, "so_long");
+	cub->win.win = mlx_new_window(cub->win.mlx, cub->win.w, cub->win.h, "cub3D");
 	if (!cub->win.win)
 		error(cub, ERR_LIB);
 	new_img(cub, &(cub->win.renderer), cub->win.w, cub->win.h);

@@ -63,6 +63,7 @@ SRCS			=	main.c \
 					${DIR_GARBAGE}gc_init.c \
 					${DIR_CORE}init_ctx.c \
 					${DIR_PARS}pars_graphic_path.c \
+					${DIR_CORE}mlx_init.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
@@ -97,7 +98,7 @@ $(MLXLIB_A): force
 # ---- Variables Rules ---- #
 
 ${NAME}	:	${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft -L${DIR_MLX} -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft -L${DIR_MLX} -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz || ${MAKE} sus
 
 # ---- Compiled Rules ---- #
 
@@ -105,7 +106,7 @@ ${NAME}	:	${OBJS}
 
 ${DIR_OBJS}%.o	:	%.c $(LIBFT_A) $(MLXLIB_A)
 					$(MKDIR) $(shell dirname $@)
-					${CC} ${CFLAGS}  -c $< -o $@ -I $(DIR_LIBFT) -I ${DIR_MLX} -Iminilibx -Ilibft
+					${CC} ${CFLAGS}  -c $< -o $@ -I $(DIR_LIBFT) -I ${DIR_MLX} -Iminilibx -Ilibft || ${MAKE} sus
 
 # ---- Usual Commands ---- #
 

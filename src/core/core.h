@@ -100,7 +100,7 @@ struct s_cub_context
 	t_garbage_collector		*gc;
 	t_cub_entity			player;
 	t_cub_textures			textures;
-	t_win					window;
+	t_win					win;
 	t_keyboard				keyboard;
 	t_cub_path				path;
 	t_color					color_f;
@@ -109,5 +109,6 @@ struct s_cub_context
 };
 
 t_uint	init_cub_context(t_cub_context *cubx);
+t_uint	win_init(t_cub_context *cubx, int win_w, int win_h);
 
 #endif
