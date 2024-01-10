@@ -19,12 +19,17 @@ typedef unsigned int	t_uint;
 typedef char*			t_str;
 
 typedef struct			s_cub_context t_cub_context;
+typedef struct			s_color t_color;
 typedef struct			s_garbage_collector t_garbage_collector;
 typedef struct			s_ptr t_ptr;
+typedef struct			s_cub_textures t_cub_textures;
+typedef struct			s_img t_img;
 typedef struct			s_cub_path t_cub_path;
-typedef struct			s_cub_player t_cub_player;
-typedef struct			s_cub_ray t_cub_ray;
-typedef struct			s_cub_image t_cub_image;
+typedef struct			s_cub_entity t_cub_entity;
+typedef struct			s_vec t_vec;
+typedef struct			s_win t_win;
+typedef struct			s_keyboard t_keyboard;
+typedef struct			s_map t_map;
 
 typedef void (*			t_free_func)(
 	t_cub_context	*cubx,

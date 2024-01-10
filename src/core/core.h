@@ -16,47 +16,98 @@
 # include "../../xenocube.h"
 
 
-struct s_cub_player
+struct s_cub_entity
 {
 	t_uint					x;
 	t_uint					y;
 	t_uint					dir;
 };
 
-struct s_cub_ray
+struct s_vec
 {
 	t_uint					x;
 	t_uint					y;
 };
 
-struct s_cub_image
+struct s_img
 {
-	void	*img_n;
-	void	*img_s;
-	void	*img_e;
-	void	*img_w;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		img_w;
+	int		img_h;
+};
+
+struct s_cub_textures
+{
+	t_img	img_n;
+	t_img	img_s;
+	t_img	img_e;
+	t_img	img_w;
+};
+
+struct s_color
+{
+	int	a;
+	int	r;
+	int	g;
+	int	b;
 };
 
 struct s_cub_path
 {
-	t_str	*path_n;
-	t_str	*path_s;
-	t_str	*path_e;
-	t_str	*path_w;
+	t_str	path_n;
+	t_str	path_s;
+	t_str	path_e;
+	t_str	path_w;
 };
+
+
+struct s_win
+{
+	void	*mlx;
+	void	*win;
+	t_img	renderer;
+	int		w;
+	int		h;
+};
+
+struct s_keyboard
+{
+	int	up;
+	int	down;
+	int	left;
+	int	right;
+	int	r_left;
+	int	r_right;
+};
+
+struct s_map
+{
+	t_str	*map;
+	t_str	*b_map;
+	int		w;
+	int		h;
+	t_vec	pos;
+	t_img	img;
+};
+
 
 struct s_cub_context
 {
 	t_garbage_collector		*gc;
-	t_cub_player			*player;
-	t_cub_ray				*ray;
-	t_cub_image				*image;
-	t_cub_path				*path;
-	t_str					*map;
-	void					*mlx_ptr;
-	void					*win_ptr;
+	t_cub_entity			player;
+	t_cub_textures			textures;
+	t_win					window;
+	t_keyboard				keyboard;
+	t_cub_path				path;
+	t_color					color_f;
+	t_color					color_c;
+	t_map					map;
 };
 
-void	init_cub_context(t_cub_context *cubx);
+t_uint	init_cub_context(t_cub_context *cubx);
 
 #endif

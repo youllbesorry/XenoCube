@@ -42,12 +42,27 @@ LIBFT_A = $(DIR_LIBFT)$(LIBFT)
 
 MLXLIB_A = $(DIR_MLX)$(LIBMLX)
 
+GREY		= \033[30m
+RED			= \033[31m
+GREEN		= \033[32m
+ORANGE		= \033[33m
+BLUE		= \033[34m
+PURPLE		= \033[35m
+LIGHTBLUE	= \033[36m
+WHITE		= \033[37m
+IRED		= \033[41m
+IWHITE		= \033[47m
+IBLUE		= \033[44m
+IPURPLE		= \033[45m
+END			= \033[0m
+
 # ---- Files ---- #
 
 SRCS			=	main.c \
 					${DIR_GARBAGE}gc_fonc.c \
 					${DIR_GARBAGE}gc_init.c \
 					${DIR_CORE}init_ctx.c \
+					${DIR_PARS}pars_graphic_path.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
@@ -60,7 +75,7 @@ DEPS_FLAGS = -MMD -MP
 
 CC		=	cc
 
-CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror
+CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -I xenocube.h
 
 # ---- Commands ---- #
 
@@ -77,12 +92,12 @@ $(LIBFT_A):	force
 $(MLXLIB_A): force
 	@ ${MAKE} ${LIBMLX} -C ${DIR_MLX} -j4
 
-.PHONY:	all clean fclean re fclean_lib fclean_all force
+.PHONY:	all clean fclean re fclean_lib fclean_all force sus
 
 # ---- Variables Rules ---- #
 
 ${NAME}	:	${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -L${DIR_MLX} -lm
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft -L${DIR_MLX} -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 
 # ---- Compiled Rules ---- #
 
@@ -106,3 +121,23 @@ fclean			:	clean fclean_lib
 
 re				:	fclean
 					$(MAKE)
+
+sus:
+	@echo "${BLUE}           ⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀        ${END}"
+	@echo "${BLUE}        ⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀     ${END}"
+	@echo "${BLUE}        ⣼⣿⠋       ${WHITE}⢀⣀⣀${BLUE}⠈⢻⣿⣿⡄    ${END}"
+	@echo "${BLUE}       ⣸⣿⡏   ${WHITE}⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄   ${END}"
+	@echo "${BLUE}       ⣿⣿⠁  ${WHITE}⢰⣿⣿⣯⠁       ⠈⠙⢿⣷⡄ ${END}"
+	@echo "${BLUE}  ⣀⣤⣴⣶⣶⣿⡟   ${WHITE}⢸⣿⣿⣿⣆          ⣿⣷ ${END}"
+	@echo "${BLUE} ⢰⣿⡟⠋⠉⣹⣿⡇   ${WHITE}⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿ ${END}"
+	@echo "${BLUE} ⢸⣿⡇  ⣿⣿⡇    ${WHITE}⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃ ${END}"
+	@echo "${BLUE} ⣸⣿⡇  ⣿⣿⡇     ${WHITE}⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛${BLUE}⢻⣿⡇  ${END}"
+	@echo "${BLUE} ⠸⣿⣧⡀ ⣿⣿⡇                ⣿⣿⠃  ${END}"
+	@echo "${BLUE}  ⠛⢿⣿⣿⣿⣿⣇     ⣰⣿⣿⣷⣶⣶⣶⣶⠶ ⢠⣿⣿   ${END}"
+	@echo "${BLUE}       ⣿⣿     ⣿⣿⡇ ⣽⣿⡏⠁  ⢸⣿⡇   ${END}"
+	@echo "${BLUE}       ⣿⣿     ⣿⣿⡇ ⢹⣿⡆   ⣸⣿⠇   ${END}"
+	@echo "${BLUE}       ⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁ ⠈⠻⣿⣿⣿⣿⡿⠏    ${END}"
+	@echo "${BLUE}       ⠈⠛⠻⠿⠿⠿⠿⠋⠁              ${END}"
+	@echo "$(IBLUE)         ░█▀▀░█░█░█▀▀         ${END}"
+	@echo "$(IBLUE)         ░▀▀█░█░█░▀▀█         ${END}"
+	@echo "$(IBLUE)         ░▀▀▀░▀▀▀░▀▀▀         ${END}"

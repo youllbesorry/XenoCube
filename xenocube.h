@@ -20,10 +20,13 @@
 # include <math.h>
 # include <stdbool.h>
 # include "src/type/type.h"
+# include "src/utils/Libft/headers/libft.h"
+# include "src/utils/Libft/headers/get_next_line.h"
 # include "src/type/enum.h"
 # include "src/utils/garbage_collector/garbage.h"
 # include "src/core/core.h"
+# include "src/parsing/parsing.h"
 
-int		main(void);
+int		main(int argc, char **argv);
 
 #endif
