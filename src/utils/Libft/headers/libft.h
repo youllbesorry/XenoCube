@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:50:15 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/09 13:58:54 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/11 13:50:06 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ size_t		ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 ssize_t		ft_cont_word(char const *s, char c);
 
-void		ft_free_tab(t_cub_context *cubx, char **strs);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_bzero(void *s, size_t n);
 void		ft_putchar_fd(char c, int fd);
@@ -37,6 +36,7 @@ void		ft_free_tab_len(char **strs, int len);
 void		*ft_calloc(size_t count, size_t size);
 void		*ft_memset(void *b, int c, size_t len);
 void		*ft_memchr(const void *s, int c, size_t n);
+void		ft_free_tab(t_cub_context *cubx, char **strs);
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 void		*ft_memmove(void *dst, const void *src, size_t len);
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));

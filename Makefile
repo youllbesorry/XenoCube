@@ -66,6 +66,7 @@ SRCS			=	main.c \
 					${DIR_CORE}win_init.c \
 					${DIR_PARS}create_tab_map.c \
 					${DIR_PARS}check_map.c \
+					${DIR_PARS}check_map_2.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
