@@ -79,7 +79,7 @@ DEPS_FLAGS = -MMD -MP
 
 CC		=	cc
 
-CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror 
+CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -g3 -fsanitize=address
 
 # ---- Commands ---- #
 

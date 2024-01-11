@@ -20,7 +20,7 @@ struct s_cub_entity
 {
 	t_uint					x;
 	t_uint					y;
-	t_uint					dir;
+	char					char_dir;
 };
 
 struct s_vec
@@ -88,8 +88,8 @@ struct s_map
 {
 	t_str	*map;
 	t_str	*b_map;
-	int		w;
-	int		h;
+	t_uint	w;
+	t_uint	h;
 	t_vec	pos;
 	t_img	img;
 };

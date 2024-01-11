@@ -29,7 +29,8 @@ t_uint	find_player(t_cub_context *cubx)
 			{
 				cubx->player.x = j;
 				cubx->player.y = i;
-				printf("x = %d\ny = %d\n", cubx->player.x, cubx->player.y);
+				cubx->player.char_dir = cubx->map.map[i][j];
+				// printf("x = %d\ny = %d\n", cubx->player.x, cubx->player.y);
 				return (CONTINUE_PROC);
 			}
 			j++;
@@ -57,8 +58,8 @@ t_uint	check_map_size(t_cub_context *cubx)
 			tmp = j;
 		i++;
 	}
-	cubx->map.w = tmp - 1;
-	cubx->map.h = i - 1;
+	// cubx->map.w = tmp - 1;
+	// cubx->map.h = i - 1;
 	printf("w = %d\nh = %d\n", cubx->map.w, cubx->map.h);
 	return (CONTINUE_PROC);
 }
@@ -103,7 +104,7 @@ t_uint	check_map(t_cub_context *cubx)
 	status = find_player(cubx);
 	if (status != CONTINUE_PROC)
 		return (status);
-	status = back_tracking_algo(cubx, cubx->player.x, cubx->player.y);
+	status = test_map(cubx);
 	if (status != CONTINUE_PROC)
 		return (status);
 	i = 0;
