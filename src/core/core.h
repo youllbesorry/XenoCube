@@ -106,6 +106,7 @@ struct s_cub_context
 	t_color					color_f;
 	t_color					color_c;
 	t_map					map;
+	t_list					*lst_map;
 };
 
 t_uint	init_cub_context(t_cub_context *cubx);

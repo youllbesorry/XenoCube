@@ -19,6 +19,8 @@ typedef unsigned int	t_uint;
 typedef char*			t_str;
 
 typedef struct			s_cub_context t_cub_context;
+typedef struct			s_list t_list;
+typedef struct			s_dlist t_dlist;
 typedef struct			s_color t_color;
 typedef struct			s_garbage_collector t_garbage_collector;
 typedef struct			s_ptr t_ptr;

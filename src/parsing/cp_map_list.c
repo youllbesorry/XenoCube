@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enum.h                                             :+:      :+:    :+:   */
+/*   cp_map_list.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:50:37 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/12 15:20:47 by bfaure           ###   ########lyon.fr   */
+/*   Created: 2024/01/12 14:50:41 by bfaure            #+#    #+#             */
+/*   Updated: 2024/01/12 16:57:06 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUM_H
-# define ENUM_H
+#include "../../xenocube.h"
 
-enum e_error
+t_uint	add_map_to_lst(t_cub_context *cubx, t_str line, t_uint fd)
 {
-	MALLOC_FAIL = 1,
-	MLX_INIT_FAIL,
-	MLX_NEW_WIN_FAIL,
-	MLX_NEW_IMG_FAIL,
-	CONTINUE_PROC,
-	STOP_PROC,
-	MAP_ERROR,
-	BAD_FD,
-	IMG_INIT_FAIL,
-	DONT_FUCK_WITH_ME,
-	CUB_CONTEXT_INIT_FAIL,
-	NULL_DATA,
-};
+	t_uint	status;
 
-#endif
+	status = CONTINUE_PROC;
+	while (line != NULL)
+	{
+		status = lst_add_back(cubx, &cubx->lst_map, line);
+		if (status != CONTINUE_PROC)
+			return (status);
+		free(line);
+		line = get_next_line(fd);
+	}
+	lst_print(&cubx->lst_map, "lst_map");
+	return (CONTINUE_PROC);
+}

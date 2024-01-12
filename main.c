@@ -44,11 +44,11 @@ int	main(int argc, char **argv)
 				printf("Error\nYou've try to fuck with me");
 			return (0);
 		}
-		if (check_map(&cubx) != CONTINUE_PROC)
-		{
-			printf("Error\nMap error\n");
-			return (0);
-		}
+		// if (check_map(&cubx) != CONTINUE_PROC)
+		// {
+		// 	printf("Error\nMap error\n");
+		// 	return (0);
+		// }
 	}
 	return (0);
 }

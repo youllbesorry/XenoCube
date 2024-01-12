@@ -17,6 +17,7 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 	int		fd;
 	t_str	line;
 	t_uint	status;
+	t_uint	check;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
@@ -25,50 +26,57 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 	if (line == NULL)
 		return (MALLOC_FAIL);
 	status = CONTINUE_PROC;
+	check = 0;
 	while (line != NULL)
 	{
 		if (line[0] == 'N' && line[1] == 'O')
 		{
 			status = pars_graphic_path(cubx, line, fd);
+			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
 		}
 		else if (line[0] == 'S' && line[1] == 'O')
 		{
 			status = pars_graphic_path(cubx, line, fd);
+			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
 		}
 		else if (line[0] == 'W' && line[1] == 'E')
 		{
 			status = pars_graphic_path(cubx, line, fd);
+			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
 		}
 		else if (line[0] == 'E' && line[1] == 'A')
 		{
 			status = pars_graphic_path(cubx, line, fd);
+			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
 		}
 		else if (line[0] == 'F')
 		{
 			status = pars_color(cubx, line, 'F', fd);
+			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
 		}
 		else if (line[0] == 'C')
 		{
 			status = pars_color(cubx, line, 'C', fd);
+			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
 		}
+		if (check == 6)
+			add_map_to_lst(cubx, line, fd);
 		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (pars_map(cubx, path) != CONTINUE_PROC)
-		return (MALLOC_FAIL);
 	return (CONTINUE_PROC);
 }
 

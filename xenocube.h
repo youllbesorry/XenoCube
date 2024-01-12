@@ -26,6 +26,7 @@
 # include "src/type/enum.h"
 # include "src/utils/garbage_collector/garbage.h"
 # include "src/core/core.h"
+# include "src/utils/list/list.h"
 # include "src/parsing/parsing.h"
 
 int		main(int argc, char **argv);
