@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:28:14 by  mchenava         #+#    #+#             */
-/*   Updated: 2024/01/12 16:09:30 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/13 11:44:35 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*lst_create(t_cub_context *cubx, void *data)
 	new = cubx->gc->malloc(cubx, sizeof(t_list), true);
 	if (!new)
 		return (NULL);
-	new->data = ft_strdup(cubx, (t_str)data);
+	new->data = data;
 	new->next = NULL;
 	return (new);
 }

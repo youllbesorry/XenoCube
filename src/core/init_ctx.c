@@ -14,6 +14,7 @@
 
 t_uint	init_cub_context(t_cub_context *cubx)
 {
+	cubx->lst_map = NULL;
 	if (init_gc(cubx) != CONTINUE_PROC)
 		return (CUB_CONTEXT_INIT_FAIL);
 	// ft_bzero(cubx, sizeof(t_cub_context));

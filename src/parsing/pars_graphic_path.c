@@ -72,10 +72,17 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 				return (status);
 		}
 		if (check == 6)
-			add_map_to_lst(cubx, line, fd);
+		{
+			status = add_map_to_lst(cubx, fd);
+			if (status != CONTINUE_PROC)
+				return (status);
+			break ;
+		}
 		free(line);
 		line = get_next_line(fd);
 	}
+	if (line != NULL)
+		free(line);
 	close(fd);
 	return (CONTINUE_PROC);
 }

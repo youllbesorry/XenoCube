@@ -42,6 +42,8 @@ int	main(int argc, char **argv)
 				printf("Error\nMalloc fail\n");
 			else if (status == DONT_FUCK_WITH_ME)
 				printf("Error\nYou've try to fuck with me");
+			else
+				printf("Error\n");
 			return (0);
 		}
 		// if (check_map(&cubx) != CONTINUE_PROC)
@@ -49,6 +51,12 @@ int	main(int argc, char **argv)
 		// 	printf("Error\nMap error\n");
 		// 	return (0);
 		// }
+		free(cubx.textures.img_n.img);
+		free(cubx.textures.img_s.img);
+		free(cubx.textures.img_e.img);
+		free(cubx.textures.img_w.img);
+		free(cubx.win.mlx);
+		gc_free_all(&cubx);
 	}
 	return (0);
 }
