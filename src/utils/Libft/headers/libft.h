@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:50:15 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/11 13:50:06 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/16 17:24:40 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ char		*ft_strdup(t_cub_context *cubx, const char *str);
 char		*ft_strjoin(t_cub_context *cubx, char *s1, char *s2);
 char		*ft_strfjoin(t_cub_context *cubx, char *s1, char *s2);
 char		*ft_strnjoin(t_cub_context *cubx, char *s1, char *s2, ssize_t n);
+char		*ft_strndup(t_cub_context *cubx, const char *str, unsigned int len);
 char		*ft_strchr(const char *s, int c);
 char		**ft_split(t_cub_context *cubx, char const *s, char c);
 char		*ft_strrchr(const char *s, int c);

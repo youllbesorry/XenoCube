@@ -6,7 +6,7 @@
 #    By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 15:23:52 by bfaure            #+#    #+#              #
-#    Updated: 2024/01/13 11:55:28 by bfaure           ###   ########lyon.fr    #
+#    Updated: 2024/01/16 17:25:07 by bfaure           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ SRCS = ft_isalpha.c\
 	ft_strlen_to_char.c \
 	ft_strdup_char.c \
 	ft_split.c\
+	ft_strndup.c\
 	#ft_split_space_tab.c \
 
 DIR_SRCS = src/

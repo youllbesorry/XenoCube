@@ -40,53 +40,63 @@ t_uint	find_player(t_cub_context *cubx)
 	return (MAP_ERROR);
 }
 
-t_uint	check_map_size(t_cub_context *cubx)
+t_uint	remplace_tab_space(t_cub_context *cubx)
 {
 	t_uint	i;
-	t_uint	j;
-	t_uint	tmp;
+	t_list	*current;
+	char	*map_data;
 
 	i = 0;
-	j = 0;
-	tmp = 0;
-	while (cubx->map.map[i])
+	current = cubx->lst_map;
+	map_data = NULL;
+	printf("\n");
+	while (current)
 	{
-		j = 0;
-		while (cubx->map.map[i][j] != '\0')
-			j++;
-		if (tmp < j)
-			tmp = j;
-		i++;
+		i = 0;
+		map_data = (char *)(current)->data;
+		while (map_data[i] != '\0')
+		{
+			if (map_data[i] == '\t')
+			{
+				current->data++;
+				current->data = ft_strjoin(cubx, "    ", (char *)(current)->data);
+				i += 3;
+			}
+			i++;
+		}
+		current = current->next;
 	}
-	// cubx->map.w = tmp - 1;
-	// cubx->map.h = i - 1;
-	printf("w = %d\nh = %d\n", cubx->map.w, cubx->map.h);
+	lst_print(&cubx->lst_map, "%s");
 	return (CONTINUE_PROC);
 }
 
-t_uint	check_hole_map(t_cub_context *cubx)
+t_uint	find_sizes(t_cub_context *cubx)
 {
 	t_uint	i;
-	t_uint	j;
+	t_uint	size_x;
+	t_uint	size_y;
+	t_list	*current;
+	char	*map_data;
 
-	i = 0;
-	while (cubx->map.map[i] != NULL)
+	size_x = 0;
+	size_y = 0;
+	current = cubx->lst_map;
+	while (current)
 	{
-		j = 0;
-		while (cubx->map.map[i][j] != '\0')
+		i = 0;
+		map_data = (char*)(current)->data;
+		while (map_data[i])
 		{
-			if (ft_isspace(cubx->map.map[i][j])
-				&& ((j > 0 && cubx->map.map[i][j - 1] != '1')
-				|| (cubx->map.map[i][j + 1] && cubx->map.map[i][j + 1] != '1'))
-				&& ((j > 0 && cubx->map.map[i][j - 1] == '0')
-				|| (cubx->map.map[i][j + 1] && cubx->map.map[i][j + 1] == '0')))
-			{
-				return (MAP_ERROR);
-			}
-			j++;
+			if (i > size_x)
+				size_x = i;
+			i++;
 		}
-		i++;
+		size_y++;
+		current = current->next;
 	}
+	cubx->map.w = size_x;
+	cubx->map.h = size_y - 1;
+	printf("\nsize_x = %d\nsize_y = %d\n", cubx->map.w, cubx->map.h);
 	return (CONTINUE_PROC);
 }
 
@@ -95,16 +105,7 @@ t_uint	check_map(t_cub_context *cubx)
 	t_uint	status;
 	t_uint	i;
 
-	status = check_hole_map(cubx);
-	if (status != CONTINUE_PROC)
-		return (status);
-	status = check_map_size(cubx);
-	if (status != CONTINUE_PROC)
-		return (status);
 	status = find_player(cubx);
-	if (status != CONTINUE_PROC)
-		return (status);
-	status = test_map(cubx);
 	if (status != CONTINUE_PROC)
 		return (status);
 	i = 0;

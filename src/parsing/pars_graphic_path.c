@@ -76,6 +76,15 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 			status = add_map_to_lst(cubx, fd);
 			if (status != CONTINUE_PROC)
 				return (status);
+			status = remplace_tab_space(cubx);
+			if (status != CONTINUE_PROC)
+				return (status);
+			status = find_sizes(cubx);
+			if (status != CONTINUE_PROC)
+				return (status);
+			status = create_tab_map(cubx);
+			if (status != CONTINUE_PROC)
+				return (status);
 			break ;
 		}
 		free(line);

@@ -76,9 +76,9 @@ SRCS			=	main.c \
 					${DIR_LST}lst_set_get.c \
 					${DIR_LST}lst_check.c \
 					${DIR_PARS}cp_map_list.c \
-					# ${DIR_PARS}check_map_2.c \
 					${DIR_PARS}check_map.c \
-					# ${DIR_PARS}create_tab_map.c \#
+					${DIR_PARS}create_tab_map.c \
+					#${DIR_PARS}check_map_2.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
