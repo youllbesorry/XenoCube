@@ -36,7 +36,10 @@ t_uint	create_tab_map(t_cub_context *cubx)
 		i++;
 		current = current->next;
 	}
-	cubx->map.map[++i] = NULL;
+	printf("\n");
+	printf("map.h = %d\n", cubx->map.h);
+	printf("i = %d\n", i);
+	cubx->map.map[i] = NULL;
 	i = 0;
 	printf("\n");
 	while (cubx->map.map[i] != NULL)

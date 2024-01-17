@@ -33,6 +33,7 @@ static char	*ft_strcpy(char *dst, const char *src, int n, unsigned int len)
 		i++;
 	}
 	dst[i] = '\0';
+	// printf("dst = %s\n", dst);
 	return (dst);
 }
 

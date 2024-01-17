@@ -44,12 +44,14 @@ t_uint	remplace_tab_space(t_cub_context *cubx)
 {
 	t_uint	i;
 	t_list	*current;
-	char	*map_data;
+	t_str	map_data;
+	t_str	str_space;
 
 	i = 0;
 	current = cubx->lst_map;
 	map_data = NULL;
 	printf("\n");
+	str_space = NULL;
 	while (current)
 	{
 		i = 0;
@@ -58,8 +60,14 @@ t_uint	remplace_tab_space(t_cub_context *cubx)
 		{
 			if (map_data[i] == '\t')
 			{
-				current->data++;
-				current->data = ft_strjoin(cubx, "    ", (char *)(current)->data);
+				str_space = NULL;
+				while (map_data[i] == '\t')
+				{
+					map_data[i] = ' ';
+					str_space = ft_strjoin(cubx, str_space, "   ");
+				}
+				current->data = ft_strjoin(cubx, str_space, map_data);
+				map_data = (char *)(current)->data;
 				i += 3;
 			}
 			i++;
