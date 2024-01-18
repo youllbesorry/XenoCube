@@ -15,20 +15,6 @@
 
 # include "../../xenocube.h"
 
-
-struct s_cub_entity
-{
-	t_uint					x;
-	t_uint					y;
-	char					char_dir;
-};
-
-struct s_vec
-{
-	t_uint					x;
-	t_uint					y;
-};
-
 struct s_img
 {
 	void	*img;
@@ -39,6 +25,27 @@ struct s_img
 	int		img_w;
 	int		img_h;
 };
+
+struct s_cub_entity
+{
+	double		x;
+	double		y;
+	int			w;
+	int			h;
+	double		dir_x;
+	double		dir_y;
+	double		plan_x;
+	double		plan_y;
+	t_img		pl;
+	char		char_dir;
+};
+
+struct s_vec
+{
+	t_uint					x;
+	t_uint					y;
+};
+
 
 struct s_cub_textures
 {

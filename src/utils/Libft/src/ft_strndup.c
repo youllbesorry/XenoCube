@@ -30,9 +30,12 @@ static char	*ft_strcpy(char *dst, const char *src, int n, unsigned int len)
 			break ;
 		}
 		dst[i] = src[i];
+		printf("dst[%zu] = %c\n", i, dst[i]);
 		i++;
 	}
 	dst[i] = '\0';
+	// printf("i = %zu\n", i);
+	// printf("src = %s\n", src);
 	// printf("dst = %s\n", dst);
 	return (dst);
 }

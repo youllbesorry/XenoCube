@@ -85,6 +85,9 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 			status = create_tab_map(cubx);
 			if (status != CONTINUE_PROC)
 				return (status);
+			// status = check_map(cubx);
+			// if (status != CONTINUE_PROC)
+			// 	return (status);
 			break ;
 		}
 		free(line);

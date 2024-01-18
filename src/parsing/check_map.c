@@ -27,10 +27,10 @@ t_uint	find_player(t_cub_context *cubx)
 			if (cubx->map.map[i][j] == 'N' || cubx->map.map[i][j] == 'S'
 				|| cubx->map.map[i][j] == 'E' || cubx->map.map[i][j] == 'W')
 			{
-				cubx->player.x = j;
-				cubx->player.y = i;
+				cubx->player.x = (double)j;
+				cubx->player.y = (double)i;
 				cubx->player.char_dir = cubx->map.map[i][j];
-				// printf("x = %d\ny = %d\n", cubx->player.x, cubx->player.y);
+				printf("x = %f\ny = %f\n", cubx->player.x, cubx->player.y);
 				return (CONTINUE_PROC);
 			}
 			j++;
@@ -92,7 +92,7 @@ t_uint	find_sizes(t_cub_context *cubx)
 	while (current)
 	{
 		i = 0;
-		map_data = (char*)(current)->data;
+		map_data = (char *)(current)->data;
 		while (map_data[i])
 		{
 			if (i > size_x)
@@ -111,17 +111,17 @@ t_uint	find_sizes(t_cub_context *cubx)
 t_uint	check_map(t_cub_context *cubx)
 {
 	t_uint	status;
-	t_uint	i;
+	// t_uint	i;
 
 	status = find_player(cubx);
 	if (status != CONTINUE_PROC)
 		return (status);
-	i = 0;
-	while (cubx->map.map[i] != NULL)
-	{
-		printf("%s", cubx->map.map[i]);
-		i++;
-	}
-	printf("\n");
+	// i = 0;
+	// while (cubx->map.map[i] != NULL)
+	// {
+	// 	printf("%s", cubx->map.map[i]);
+	// 	i++;
+	// }
+	// printf("\n");
 	return (CONTINUE_PROC);
 }
