@@ -30,6 +30,7 @@ t_uint	find_player(t_cub_context *cubx)
 				cubx->player.x = (double)j;
 				cubx->player.y = (double)i;
 				cubx->player.char_dir = cubx->map.map[i][j];
+				cubx->map.map[i][j] = '0';
 				printf("x = %f\ny = %f\n", cubx->player.x, cubx->player.y);
 				return (CONTINUE_PROC);
 			}
@@ -111,17 +112,21 @@ t_uint	find_sizes(t_cub_context *cubx)
 t_uint	check_map(t_cub_context *cubx)
 {
 	t_uint	status;
-	// t_uint	i;
 
+	status = remplace_tab_space(cubx);
+	if (status != CONTINUE_PROC)
+		return (status);
+	status = find_sizes(cubx);
+	if (status != CONTINUE_PROC)
+		return (status);
+	status = create_tab_map(cubx);
+	if (status != CONTINUE_PROC)
+		return (status);
 	status = find_player(cubx);
 	if (status != CONTINUE_PROC)
 		return (status);
-	// i = 0;
-	// while (cubx->map.map[i] != NULL)
-	// {
-	// 	printf("%s", cubx->map.map[i]);
-	// 	i++;
-	// }
-	// printf("\n");
-	return (CONTINUE_PROC);
+	status = check_valid_map(cubx);
+	if (status != CONTINUE_PROC)
+		return (status);
+	return (status);
 }

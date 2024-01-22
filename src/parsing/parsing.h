@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:42:35 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/16 16:22:12 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/22 14:53:53 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd);
 t_uint	find_sizes(t_cub_context *cubx);
 t_uint	remplace_tab_space(t_cub_context *cubx);
 t_uint  create_tab_map(t_cub_context *cubx);
+t_uint  check_valid_map(t_cub_context *cubx);
 
 #endif

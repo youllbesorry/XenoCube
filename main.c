@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_cub_context	cubx;
 	t_uint			status;
+	int				i;
 
 	status = 0;
 	if (argc != 2)
@@ -28,6 +29,8 @@ int	main(int argc, char **argv)
 		if (win_init(&cubx, 1920, 1080) != CONTINUE_PROC)
 		{
 			printf("Error\nmlx init fail\n");
+			mlx_destroy_display(cubx.win.mlx);
+			free(cubx.win.mlx);
 			return (0);
 		}
 		if (init_cub_context(&cubx) != CONTINUE_PROC)
@@ -46,15 +49,23 @@ int	main(int argc, char **argv)
 				printf("Error\n");
 			return (0);
 		}
-		// if (check_map(&cubx) != CONTINUE_PROC)
-		// {
-		// 	printf("Error\nMap error\n");
-		// 	return (0);
-		// }
-		free(cubx.textures.img_n.img);
-		free(cubx.textures.img_s.img);
-		free(cubx.textures.img_e.img);
-		free(cubx.textures.img_w.img);
+		if (check_map(&cubx) != CONTINUE_PROC)
+		{
+			printf("Error\nMap error\n");
+			return (0);
+		}
+		i = 0;
+		printf("\n");
+		while (cubx.map.map[i] != NULL)
+		{
+			printf("|%s|\n", cubx.map.map[i]);
+			i++;
+		}
+		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_n.img);
+		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_s.img);
+		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_e.img);
+		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_w.img);
+		mlx_destroy_display(cubx.win.mlx);
 		free(cubx.win.mlx);
 		gc_free_all(&cubx);
 	}

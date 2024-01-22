@@ -21,7 +21,7 @@ t_uint	create_tab_map(t_cub_context *cubx)
 	i = 0;
 	current = cubx->lst_map;
 	map_data = NULL;
-	cubx->map.map = (char **)malloc(sizeof(char *) * (cubx->map.h + 1));
+	cubx->map.map = gc_malloc(cubx, sizeof(char *) * (cubx->map.h + 1), false);
 	if (cubx->map.map == NULL)
 		return (MALLOC_FAIL);
 	while (current)
@@ -40,12 +40,5 @@ t_uint	create_tab_map(t_cub_context *cubx)
 	printf("map.h = %d\n", cubx->map.h);
 	printf("i = %d\n", i);
 	cubx->map.map[i] = NULL;
-	i = 0;
-	printf("\n");
-	while (cubx->map.map[i] != NULL)
-	{
-		printf("|%s|\n", cubx->map.map[i]);
-		i++;
-	}
 	return (CONTINUE_PROC);
 }
