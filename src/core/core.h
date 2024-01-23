@@ -118,5 +118,6 @@ struct s_cub_context
 
 t_uint	init_cub_context(t_cub_context *cubx);
 t_uint	win_init(t_cub_context *cubx, int win_w, int win_h);
+t_uint	ft_clear(t_cub_context *cubx);
 
 #endif

@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		if (init_cub_context(&cubx) != CONTINUE_PROC)
 		{
 			printf("Error\nCub_context_init fail\n");
-			return (0);
+			return (gc_free_all(&cubx), 0);
 		}
 		status = pars_file(&cubx, argv[1]);
 		if (status != CONTINUE_PROC)
@@ -47,12 +47,12 @@ int	main(int argc, char **argv)
 				printf("Error\nYou've try to fuck with me");
 			else
 				printf("Error\n");
-			return (0);
+			return (ft_clear(&cubx), 0);
 		}
 		if (check_map(&cubx) != CONTINUE_PROC)
 		{
 			printf("Error\nMap error\n");
-			return (0);
+			return (ft_clear(&cubx), 0);
 		}
 		i = 0;
 		printf("\n");
@@ -61,13 +61,7 @@ int	main(int argc, char **argv)
 			printf("|%s|\n", cubx.map.map[i]);
 			i++;
 		}
-		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_n.img);
-		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_s.img);
-		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_e.img);
-		mlx_destroy_image(cubx.win.mlx, cubx.textures.img_w.img);
-		mlx_destroy_display(cubx.win.mlx);
-		free(cubx.win.mlx);
-		gc_free_all(&cubx);
+		ft_clear(&cubx);
 	}
 	return (0);
 }

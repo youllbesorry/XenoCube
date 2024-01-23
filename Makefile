@@ -79,6 +79,7 @@ SRCS			=	main.c \
 					${DIR_PARS}check_map.c \
 					${DIR_PARS}create_tab_map.c \
 					${DIR_PARS}check_valid_map.c \
+					${DIR_CORE}ft_clear.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
@@ -91,7 +92,7 @@ DEPS_FLAGS = -MMD -MP
 
 CC		=	cc
 
-CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -g3 -fsanitize=address
 
 # ---- Commands ---- #
 
@@ -134,6 +135,8 @@ clean			:
 
 fclean			:	clean fclean_lib
 					${RM} ${NAME}
+
+bonus			:	all
 
 re				:	fclean
 					$(MAKE)
