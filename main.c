@@ -54,6 +54,7 @@ int	main(int argc, char **argv)
 			printf("Error\nMap error\n");
 			return (ft_clear(&cubx), 0);
 		}
+		back_to_normal_map(&cubx);
 		i = 0;
 		printf("\n");
 		while (cubx.map.map[i] != NULL)

@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:10:58 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/23 17:04:49 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/24 15:51:19 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ t_uint	check_player_evo(t_cub_context *cubx, t_uint x, t_uint y, t_uint check)
 		check = 1;
 	}
 	if (y + 1 == cubx->map.h)
-	{
-		check = 0;
-		return (check);
-	}
+		return (0);
 	if (cubx->map.map[y + 1][x] == '0')
 	{
 		cubx->map.map[y + 1][x] = '*';
@@ -46,17 +43,17 @@ t_uint	check_hole(t_cub_context *cubx, t_uint x, t_uint y)
 {
 	if (x <= 0)
 		return (MAP_ERROR);
-	if (cubx->map.map[y][x - 1] == ' ' || cubx->map.map[y][x - 1] == '\t')
+	if (cubx->map.map[y][x - 1] != '1' && cubx->map.map[y][x - 1] != '*')
 		return (MAP_ERROR);
-	if (cubx->map.map[y][x + 1] == ' ' || cubx->map.map[y][x + 1] == '\0')
+	if (cubx->map.map[y][x + 1] != '1' && cubx->map.map[y][x + 1] != '*')
 		return (MAP_ERROR);
 	if (y <= 0)
 		return (MAP_ERROR);
-	if (cubx->map.map[y - 1][x] == ' ' || cubx->map.map[y - 1][x] == '\t')
+	if (cubx->map.map[y - 1][x] != '1' && cubx->map.map[y - 1][x] != '*')
 		return (MAP_ERROR);
 	if (y + 1 == cubx->map.h)
 		return (MAP_ERROR);
-	if (cubx->map.map[y + 1][x] == ' ' || cubx->map.map[y + 1][x] == '\t')
+	if (cubx->map.map[y + 1][x] != '1' && cubx->map.map[y + 1][x] != '*')
 		return (MAP_ERROR);
 	return (CONTINUE_PROC);
 }

@@ -94,7 +94,7 @@ struct s_keyboard
 struct s_map
 {
 	t_str	*map;
-	t_str	*b_map;
+	// t_str	*v_map;
 	t_uint	w;
 	t_uint	h;
 	t_vec	pos;

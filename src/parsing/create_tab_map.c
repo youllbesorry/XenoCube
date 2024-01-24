@@ -36,9 +36,27 @@ t_uint	create_tab_map(t_cub_context *cubx)
 		i++;
 		current = current->next;
 	}
-	printf("\n");
-	printf("map.h = %d\n", cubx->map.h);
-	printf("i = %d\n", i);
 	cubx->map.map[i] = NULL;
+	return (CONTINUE_PROC);
+}
+
+t_uint	back_to_normal_map(t_cub_context *cubx)
+{
+	t_uint	i;
+	t_uint	j;
+
+	i = 0;
+	j = 0;
+	while (cubx->map.map[i] != NULL)
+	{
+		j = 0;
+		while (cubx->map.map[i][j] != '\0')
+		{
+			if (cubx->map.map[i][j] == '*')
+				cubx->map.map[i][j] = '0';
+			j++;
+		}
+		i++;
+	}
 	return (CONTINUE_PROC);
 }
