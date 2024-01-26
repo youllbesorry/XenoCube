@@ -22,23 +22,29 @@ LIBMLX		=	libmlx.a
 
 # ---- Directories ---- #
 
-DIR_OBJS	=	.objs/
+DIR_OBJS		=	.objs/
 
-DIR_SRCS	=	src/
+DIR_SRCS		=	src/
 
-DIR_UTILS	=	${DIR_SRCS}utils/
+DIR_UTILS		=	${DIR_SRCS}utils/
 
-DIR_GARBAGE	=	${DIR_UTILS}garbage_collector/
+DIR_GARBAGE		=	${DIR_UTILS}garbage_collector/
 
-DIR_CORE	=	${DIR_SRCS}core/
+DIR_CORE		=	${DIR_SRCS}core/
 
-DIR_PARS	= 	${DIR_SRCS}parsing/
+DIR_DISPLAY		=	${DIR_SRCS}display/
 
-DIR_MLX		=	minilibx-linux/
+DIR_ENVIRONMENT	=	${DIR_SRCS}environment/
 
-DIR_LIBFT	=	${DIR_UTILS}Libft/
+DIR_EVENT		=	${DIR_SRCS}event/
 
-DIR_LST		=	${DIR_UTILS}list/
+DIR_PARS		= 	${DIR_SRCS}parsing/
+
+DIR_MLX			=	minilibx-linux/
+
+DIR_LIBFT		=	${DIR_UTILS}Libft/
+
+DIR_LST			=	${DIR_UTILS}list/
 
 LIBFT_A = $(DIR_LIBFT)$(LIBFT)
 
@@ -80,6 +86,13 @@ SRCS			=	main.c \
 					${DIR_PARS}create_tab_map.c \
 					${DIR_PARS}check_valid_map.c \
 					${DIR_CORE}ft_clear.c \
+					${DIR_UTILS}vec.c \
+					${DIR_DISPLAY}display_utils.c \
+					${DIR_DISPLAY}raycast.c \
+					${DIR_EVENT}move.c \
+					${DIR_EVENT}rotate.c \
+					${DIR_EVENT}event_manager.c \
+					${DIR_ENVIRONMENT}map_utils.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
@@ -92,7 +105,7 @@ DEPS_FLAGS = -MMD -MP
 
 CC		=	cc
 
-CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -g3 -fsanitize=address -Ixenocube.h
 
 # ---- Commands ---- #
 
@@ -114,15 +127,15 @@ $(MLXLIB_A): force
 # ---- Variables Rules ---- #
 
 ${NAME}	:	${OBJS}
-			${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft -L${DIR_MLX} -lmlx_Linux -L/usr/lib -Iminilibx -lXext -lX11 -lm -lz || ${MAKE} sus
+			@ ${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft -L${DIR_MLX} -lmlx_Linux -L/usr/lib -Iminilibx -lXext -lX11 -lm -lz && echo "${GREEN}\n* ${NAME} compilation completed !!!\n${END}"|| ${MAKE} sus
 
 # ---- Compiled Rules ---- #
 
 -include ${DEPS}
 
 ${DIR_OBJS}%.o	:	%.c $(LIBFT_A) $(MLXLIB_A)
-					$(MKDIR) $(shell dirname $@)
-					${CC} ${CFLAGS}  -c $< -o $@ -I $(DIR_LIBFT) -I ${DIR_MLX} -Iminilibx -Ilibft || ${MAKE} sus
+					@ $(MKDIR) $(shell dirname $@)
+					@ ${CC} ${CFLAGS}  -c $< -o $@ -I $(DIR_LIBFT) -I ${DIR_MLX} -Iminilibx -Ilibft && echo "  $@" || ${MAKE} sus
 
 # ---- Usual Commands ---- #
 
@@ -142,21 +155,21 @@ re				:	fclean
 					$(MAKE)
 
 sus:
-	@echo "${BLUE}           ⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀        ${END}"
-	@echo "${BLUE}        ⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀     ${END}"
-	@echo "${BLUE}        ⣼⣿⠋       ${WHITE}⢀⣀⣀${BLUE}⠈⢻⣿⣿⡄    ${END}"
-	@echo "${BLUE}       ⣸⣿⡏   ${WHITE}⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄   ${END}"
-	@echo "${BLUE}       ⣿⣿⠁  ${WHITE}⢰⣿⣿⣯⠁       ⠈⠙⢿⣷⡄ ${END}"
-	@echo "${BLUE}  ⣀⣤⣴⣶⣶⣿⡟   ${WHITE}⢸⣿⣿⣿⣆          ⣿⣷ ${END}"
-	@echo "${BLUE} ⢰⣿⡟⠋⠉⣹⣿⡇   ${WHITE}⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿ ${END}"
-	@echo "${BLUE} ⢸⣿⡇  ⣿⣿⡇    ${WHITE}⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃ ${END}"
-	@echo "${BLUE} ⣸⣿⡇  ⣿⣿⡇     ${WHITE}⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛${BLUE}⢻⣿⡇  ${END}"
-	@echo "${BLUE} ⠸⣿⣧⡀ ⣿⣿⡇                ⣿⣿⠃  ${END}"
-	@echo "${BLUE}  ⠛⢿⣿⣿⣿⣿⣇     ⣰⣿⣿⣷⣶⣶⣶⣶⠶ ⢠⣿⣿   ${END}"
-	@echo "${BLUE}       ⣿⣿     ⣿⣿⡇ ⣽⣿⡏⠁  ⢸⣿⡇   ${END}"
-	@echo "${BLUE}       ⣿⣿     ⣿⣿⡇ ⢹⣿⡆   ⣸⣿⠇   ${END}"
-	@echo "${BLUE}       ⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁ ⠈⠻⣿⣿⣿⣿⡿⠏    ${END}"
-	@echo "${BLUE}       ⠈⠛⠻⠿⠿⠿⠿⠋⠁              ${END}"
-	@echo "$(IBLUE)         ░█▀▀░█░█░█▀▀         ${END}"
-	@echo "$(IBLUE)         ░▀▀█░█░█░▀▀█         ${END}"
-	@echo "$(IBLUE)         ░▀▀▀░▀▀▀░▀▀▀         ${END}"
+	@echo "${RED}           ⣠⣤⣤⣤⣤⣤⣶⣦⣤⣄⡀        ${END}"
+	@echo "${RED}        ⢀⣴⣿⡿⠛⠉⠙⠛⠛⠛⠛⠻⢿⣿⣷⣤⡀     ${END}"
+	@echo "${RED}        ⣼⣿⠋       ${WHITE}⢀⣀⣀${RED}⠈⢻⣿⣿⡄    ${END}"
+	@echo "${RED}       ⣸⣿⡏   ${WHITE}⣠⣶⣾⣿⣿⣿⠿⠿⠿⢿⣿⣿⣿⣄   ${END}"
+	@echo "${RED}       ⣿⣿⠁  ${WHITE}⢰⣿⣿⣯⠁       ⠈⠙⢿⣷⡄ ${END}"
+	@echo "${RED}  ⣀⣤⣴⣶⣶⣿⡟   ${WHITE}⢸⣿⣿⣿⣆          ⣿⣷ ${END}"
+	@echo "${RED} ⢰⣿⡟⠋⠉⣹⣿⡇   ${WHITE}⠘⣿⣿⣿⣿⣷⣦⣤⣤⣤⣶⣶⣶⣶⣿⣿⣿ ${END}"
+	@echo "${RED} ⢸⣿⡇  ⣿⣿⡇    ${WHITE}⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠃ ${END}"
+	@echo "${RED} ⣸⣿⡇  ⣿⣿⡇     ${WHITE}⠉⠻⠿⣿⣿⣿⣿⡿⠿⠿⠛${RED}⢻⣿⡇  ${END}"
+	@echo "${RED} ⠸⣿⣧⡀ ⣿⣿⡇                ⣿⣿⠃  ${END}"
+	@echo "${RED}  ⠛⢿⣿⣿⣿⣿⣇     ⣰⣿⣿⣷⣶⣶⣶⣶⠶ ⢠⣿⣿   ${END}"
+	@echo "${RED}       ⣿⣿     ⣿⣿⡇ ⣽⣿⡏⠁  ⢸⣿⡇   ${END}"
+	@echo "${RED}       ⣿⣿     ⣿⣿⡇ ⢹⣿⡆   ⣸⣿⠇   ${END}"
+	@echo "${RED}       ⢿⣿⣦⣄⣀⣠⣴⣿⣿⠁ ⠈⠻⣿⣿⣿⣿⡿⠏    ${END}"
+	@echo "${RED}       ⠈⠛⠻⠿⠿⠿⠿⠋⠁              ${END}"
+	@echo "$(IRED)         ░█▀▀░█░█░█▀▀         ${END}"
+	@echo "$(IRED)         ░▀▀█░█░█░▀▀█         ${END}"
+	@echo "$(IRED)         ░▀▀▀░▀▀▀░▀▀▀         ${END}"

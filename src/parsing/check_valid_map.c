@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:10:58 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/24 15:51:19 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/26 15:35:54 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_uint	check_valid_map(t_cub_context *cubx)
 	t_uint	check;
 
 	check = 1;
-	cubx->map.map[(t_uint)cubx->player.y][(t_uint)cubx->player.x] = '*';
+	cubx->map.map[(t_uint)cubx->player.pos.y][(t_uint)cubx->player.pos.x] = '*';
 	while (check == 1)
 	{
 		check = 0;

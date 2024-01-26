@@ -29,9 +29,13 @@ typedef struct			s_img t_img;
 typedef struct			s_cub_path t_cub_path;
 typedef struct			s_cub_entity t_cub_entity;
 typedef struct			s_vec t_vec;
+typedef struct			s_dvec t_dvec;
+typedef struct			s_line t_line;
+typedef struct			s_ray t_ray;
 typedef struct			s_win t_win;
 typedef struct			s_keyboard t_keyboard;
 typedef struct			s_map t_map;
+
 
 typedef void (*			t_free_func)(
 	t_cub_context	*cubx,

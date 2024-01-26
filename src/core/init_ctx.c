@@ -12,6 +12,43 @@
 
 #include "../../xenocube.h"
 
+//SUD	= dir(0, 1) plan(0.66, 0)
+//NORD	= dir(0, -1) plan(-0.66, 0)
+//OUEST	= dir(-1, 0) plan(0, 0.66)
+//EST	= dir(1, 0) plan(0, -0.66)
+
+static void	init_entity_plan(t_cub_entity *entity)
+{
+	if (entity->char_dir == 'N')
+	{
+		init_dvec(&entity->dir, 0, -1);
+		init_dvec(&entity->plan, -0.66, 0);
+	}
+	else if (entity->char_dir == 'S')
+	{
+		init_dvec(&entity->dir, 0, 1);
+		init_dvec(&entity->plan, 0.66, 0);
+	}
+	else if (entity->char_dir == 'O')
+	{
+		init_dvec(&entity->dir, -1, 0);
+		init_dvec(&entity->plan, 0, 0.66);
+	}
+	else if (entity->char_dir == 'E')
+	{
+		init_dvec(&entity->dir, 1, 0);
+		init_dvec(&entity->plan, 0, -0.66);
+	}
+}
+
+void	init_entity(t_cub_entity *entity, double x, double y)
+{
+	init_dvec(&entity->pos, x + 0.5, y + 0.5);
+	entity->w = 16;
+	entity->h = 16;
+	init_entity_plan(entity);
+}
+
 t_uint	init_cub_context(t_cub_context *cubx)
 {
 	cubx->lst_map = NULL;

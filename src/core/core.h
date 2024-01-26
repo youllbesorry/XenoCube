@@ -15,6 +15,24 @@
 
 # include "../../xenocube.h"
 
+struct s_vec
+{
+	int	x;
+	int	y;
+};
+
+struct s_dvec
+{
+	double	x;
+	double	y;
+};
+
+struct s_line
+{
+	t_vec	p1;
+	t_vec	p2;
+};
+
 struct s_img
 {
 	void	*img;
@@ -28,24 +46,14 @@ struct s_img
 
 struct s_cub_entity
 {
-	double		x;
-	double		y;
-	int			w;
-	int			h;
-	double		dir_x;
-	double		dir_y;
-	double		plan_x;
-	double		plan_y;
-	t_img		pl;
-	char		char_dir;
+	t_dvec	pos;
+	int		w;
+	int		h;
+	t_dvec	dir;
+	t_dvec	plan;
+	t_img	pl;
+	char	char_dir;
 };
-
-struct s_vec
-{
-	t_uint					x;
-	t_uint					y;
-};
-
 
 struct s_cub_textures
 {
@@ -101,6 +109,21 @@ struct s_map
 	t_img	img;
 };
 
+struct s_ray
+{
+	int		collision;
+	int		side;
+	double	distance;
+	double	camera;
+	t_dvec	direction_ray;
+	t_dvec	range_next;
+	t_dvec	next;
+	t_vec	step;
+	t_vec	map_pos;
+	int		line_h;
+	t_line	ray_line;
+};
+
 
 struct s_cub_context
 {
@@ -108,7 +131,7 @@ struct s_cub_context
 	t_cub_entity			player;
 	t_cub_textures			textures;
 	t_win					win;
-	t_keyboard				keyboard;
+	t_keyboard				keys;
 	t_cub_path				path;
 	t_color					color_f;
 	t_color					color_c;
@@ -119,5 +142,6 @@ struct s_cub_context
 t_uint	init_cub_context(t_cub_context *cubx);
 t_uint	win_init(t_cub_context *cubx, int win_w, int win_h);
 t_uint	ft_clear(t_cub_context *cubx);
+void	init_entity(t_cub_entity *entity, double x, double y);
 
 #endif
