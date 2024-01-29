@@ -29,33 +29,37 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 	check = 0;
 	while (line != NULL)
 	{
-		if (line[0] == 'N' && line[1] == 'O')
+		if (line[0] == 'W' && line[1] == 'E')
 		{
-			status = pars_graphic_path(cubx, line, fd);
+			status = pars_graphic_path(cubx, line, fd, 0);
 			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
+			printf("cubx.img[0].img = %p\n", cubx->img[0].img);
 		}
-		else if (line[0] == 'S' && line[1] == 'O')
+		else if (line[0] == 'N' && line[1] == 'O')
 		{
-			status = pars_graphic_path(cubx, line, fd);
+			status = pars_graphic_path(cubx, line, fd, 1);
 			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
-		}
-		else if (line[0] == 'W' && line[1] == 'E')
-		{
-			status = pars_graphic_path(cubx, line, fd);
-			check++;
-			if (status != CONTINUE_PROC)
-				return (status);
+			printf("cubx.img[1].img = %p\n", cubx->img[1].img);
 		}
 		else if (line[0] == 'E' && line[1] == 'A')
 		{
-			status = pars_graphic_path(cubx, line, fd);
+			status = pars_graphic_path(cubx, line, fd, 2);
 			check++;
 			if (status != CONTINUE_PROC)
 				return (status);
+			printf("cubx.img[2].img = %p\n", cubx->img[2].img);
+		}
+		else if (line[0] == 'S' && line[1] == 'O')
+		{
+			status = pars_graphic_path(cubx, line, fd, 3);
+			check++;
+			if (status != CONTINUE_PROC)
+				return (status);
+			printf("cubx.img[3].img = %p\n", cubx->img[3].img);
 		}
 		else if (line[0] == 'F')
 		{
@@ -87,10 +91,23 @@ t_uint	pars_file(t_cub_context *cubx, t_str path)
 	return (CONTINUE_PROC);
 }
 
-t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd)
+t_uint	load_img(t_cub_context *cubx, char *path, t_uint i)
+{
+	cubx->img[i].img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->img[i].img_w),
+			&(cubx->img[i].img_h));
+	if (!cubx->img[i].img)
+		return (printf("%s\n", path), 1);
+	cubx->img[i].addr = mlx_get_data_addr(cubx->img[i].img, &(cubx->img[i].bits_per_pixel),
+			&(cubx->img[i].line_length), &(cubx->img[i].endian));
+	if (!cubx->img[i].addr)
+		return (printf("%s\n", path), 1);
+	printf("load_img img->img = %p\n", cubx->img[i].img);
+	return (0);
+}
+
+t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd, t_uint n)
 {
 	t_uint			i;
-	static t_uint	flag = 0;
 	t_str			path;
 
 	i = 2;
@@ -106,43 +123,14 @@ t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd)
 		}
 		i++;
 	}
-	if (flag == 0)
-	{
-		path = ft_substr(cubx, line, i, ft_strlen(line));
-		cubx->textures.img_n.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
-				&(cubx->win.renderer.img_h));
-		cubx->gc->free(cubx, path);
-		if (cubx->textures.img_n.img == NULL)
-			return (IMG_INIT_FAIL);
-	}
-	else if (flag == 1)
-	{
-		path = ft_substr(cubx, line, i, ft_strlen(line));
-		cubx->textures.img_s.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
-				&(cubx->win.renderer.img_h));
-		cubx->gc->free(cubx, path);
-		if (cubx->textures.img_s.img == NULL)
-			return (IMG_INIT_FAIL);
-	}
-	else if (flag == 2)
-	{
-		path = ft_substr(cubx, line, i, ft_strlen(line));
-		cubx->textures.img_w.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
-				&(cubx->win.renderer.img_h));
-		cubx->gc->free(cubx, path);
-		if (cubx->textures.img_w.img == NULL)
-			return (IMG_INIT_FAIL);
-	}
-	else if (flag == 3)
-	{
-		path = ft_substr(cubx, line, i, ft_strlen(line));
-		cubx->textures.img_e.img = mlx_xpm_file_to_image(cubx->win.mlx, path, &(cubx->win.renderer.img_w),
-				&(cubx->win.renderer.img_h));
-		cubx->gc->free(cubx, path);
-		if (cubx->textures.img_e.img == NULL)
-			return (IMG_INIT_FAIL);
-	}
-	flag++;
+	path = ft_substr(cubx, line, i, ft_strlen(line));
+	if (path == NULL)
+		return (MALLOC_FAIL);
+	printf("path = %s\n", path);
+	if (load_img(cubx, path, n) == 1)
+		return (cubx->gc->free(cubx, path), MALLOC_FAIL);
+	cubx->gc->free(cubx, path);
+	printf("pars_graphic_path img.img = %p\n", cubx->img[n].img);
 	return (CONTINUE_PROC);
 }
 

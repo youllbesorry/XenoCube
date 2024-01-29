@@ -28,7 +28,7 @@ t_uint	find_player(t_cub_context *cubx)
 				|| cubx->map.map[i][j] == 'E' || cubx->map.map[i][j] == 'W')
 			{
 				cubx->player.x = (double)j;
-				cubx->player.y = (double)i;
+				cubx->player.y = (double)i; // TODO : check if it's good
 				cubx->player.char_dir = cubx->map.map[i][j];
 				cubx->map.map[i][j] = '0';
 				printf("x = %f\ny = %f\n", cubx->player.x, cubx->player.y);

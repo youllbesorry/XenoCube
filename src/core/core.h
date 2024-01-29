@@ -42,17 +42,8 @@ struct s_cub_entity
 
 struct s_vec
 {
-	t_uint					x;
-	t_uint					y;
-};
-
-
-struct s_cub_textures
-{
-	t_img	img_n;
-	t_img	img_s;
-	t_img	img_e;
-	t_img	img_w;
+	int					x;
+	int					y;
 };
 
 struct s_color
@@ -62,15 +53,6 @@ struct s_color
 	int	g;
 	int	b;
 };
-
-struct s_cub_path
-{
-	t_str	path_n;
-	t_str	path_s;
-	t_str	path_e;
-	t_str	path_w;
-};
-
 
 struct s_win
 {
@@ -105,11 +87,10 @@ struct s_map
 struct s_cub_context
 {
 	t_garbage_collector		*gc;
+	t_img					*img;
 	t_cub_entity			player;
-	t_cub_textures			textures;
 	t_win					win;
 	t_keyboard				keyboard;
-	t_cub_path				path;
 	t_color					color_f;
 	t_color					color_c;
 	t_map					map;
@@ -119,5 +100,6 @@ struct s_cub_context
 t_uint	init_cub_context(t_cub_context *cubx);
 t_uint	win_init(t_cub_context *cubx, int win_w, int win_h);
 t_uint	ft_clear(t_cub_context *cubx);
+t_uint	alloc_img(t_cub_context *cubx);
 
 #endif

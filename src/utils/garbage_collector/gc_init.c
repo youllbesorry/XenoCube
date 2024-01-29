@@ -19,6 +19,7 @@ t_uint	init_gc(t_cub_context *cubx)
 	gc = (t_garbage_collector *)malloc(sizeof(t_garbage_collector));
 	if (!gc)
 		return (MALLOC_FAIL);
+	ft_bzero(gc, sizeof(t_garbage_collector));
 	gc->free = gc_free;
 	gc->malloc = gc_malloc;
 	gc->ptrs = NULL;
