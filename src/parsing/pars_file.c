@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:29:41 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/31 13:27:32 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/31 18:10:20 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ t_uint	find_we_no(t_cub_context *cubx, t_str line, int fd, t_uint *check)
 
 	if (line[0] == 'W' && line[1] == 'E')
 	{
-		status = pars_graphic_path(cubx, line, fd, 0);
 		(*check)++;
+		status = pars_graphic_path(cubx, line, fd, 0);
 		if (status != CONTINUE_PROC)
 			return (status);
 		printf("cubx.img[0].img = %p\n", cubx->img[0].img);
 	}
 	else if (line[0] == 'N' && line[1] == 'O')
 	{
-		status = pars_graphic_path(cubx, line, fd, 1);
 		(*check)++;
+		status = pars_graphic_path(cubx, line, fd, 1);
 		if (status != CONTINUE_PROC)
 			return (status);
 		printf("cubx.img[1].img = %p\n", cubx->img[1].img);
@@ -41,16 +41,16 @@ t_uint	find_ea_so(t_cub_context *cubx, t_str line, int fd, t_uint *check)
 
 	if (line[0] == 'E' && line[1] == 'A')
 	{
-		status = pars_graphic_path(cubx, line, fd, 2);
 		(*check)++;
+		status = pars_graphic_path(cubx, line, fd, 2);
 		if (status != CONTINUE_PROC)
 			return (status);
 		printf("cubx.img[2].img = %p\n", cubx->img[2].img);
 	}
 	else if (line[0] == 'S' && line[1] == 'O')
 	{
-		status = pars_graphic_path(cubx, line, fd, 3);
 		(*check)++;
+		status = pars_graphic_path(cubx, line, fd, 3);
 		if (status != CONTINUE_PROC)
 			return (status);
 		printf("cubx.img[3].img = %p\n", cubx->img[3].img);
@@ -86,6 +86,7 @@ t_uint	find_the_path(t_cub_context *cubx, t_str line, int fd)
 	check = 0;
 	while (line != NULL)
 	{
+		printf("find_the_path line = |%s|\n", line);
 		if (find_we_no(cubx, line, fd, &check) != CONTINUE_PROC)
 			return (free(line), MALLOC_FAIL);
 		if (find_ea_so(cubx, line, fd, &check) != CONTINUE_PROC)

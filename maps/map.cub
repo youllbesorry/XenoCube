@@ -1,6 +1,6 @@
 NO ./textures/Brick.xpm
 SO ./textures/Metal.xpm
-WE ./textures/Tile.xpm
+WE 
 EA ./textures/Wood.xpm
 
 F 220,100,0

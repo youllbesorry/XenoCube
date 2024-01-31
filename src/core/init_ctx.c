@@ -12,23 +12,12 @@
 
 #include "../../xenocube.h"
 
-t_uint	alloc_img(t_cub_context *cubx)
-{
-	cubx->img = cubx->gc->malloc(cubx, sizeof(t_img) * 4, false);
-	if (!cubx->img)
-		return (MALLOC_FAIL);
-	printf("img = %p\n", cubx->img);
-	ft_bzero(cubx->img, sizeof(t_img));
-	return (CONTINUE_PROC);
-}
-
 t_uint	init_cub_context(t_cub_context *cubx)
 {
 	ft_bzero(cubx, sizeof(t_cub_context));
 	cubx->lst_map = NULL;
 	if (init_gc(cubx) != CONTINUE_PROC)
 		return (CUB_CONTEXT_INIT_FAIL);
-	alloc_img(cubx);
 	// cubx->color_f = (t_cub_textures *)malloc(sizeof(t_cub_color));
 	// if (cubx->color_f == NULL)
 	// 	return (MALLOC_FAIL);

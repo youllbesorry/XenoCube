@@ -87,7 +87,7 @@ struct s_map
 struct s_cub_context
 {
 	t_garbage_collector		*gc;
-	t_img					*img;
+	t_img					img[4];
 	t_cub_entity			player;
 	t_win					win;
 	t_keyboard				keyboard;
@@ -100,6 +100,5 @@ struct s_cub_context
 t_uint	init_cub_context(t_cub_context *cubx);
 t_uint	win_init(t_cub_context *cubx, int win_w, int win_h);
 t_uint	ft_clear(t_cub_context *cubx);
-t_uint	alloc_img(t_cub_context *cubx);
 
 #endif
