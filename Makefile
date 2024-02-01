@@ -81,6 +81,8 @@ SRCS			=	main.c \
 					${DIR_PARS}check_valid_map.c \
 					${DIR_CORE}ft_clear.c \
 					${DIR_PARS}pars_file.c \
+					${DIR_PARS}pars_color.c \
+					${DIR_PARS}find.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
@@ -93,7 +95,7 @@ DEPS_FLAGS = -MMD -MP
 
 CC		=	cc
 
-CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	=	${DEPS_FLAGS} -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 # ---- Commands ---- #
 

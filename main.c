@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 				printf("Error\n");
 			return (ft_clear(&cubx), 0);
 		}
-		printf("cubx.img[0].img = %p\n", cubx.img[0].img);
 		if (check_map(&cubx) != CONTINUE_PROC)
 		{
 			printf("Error\nMap error\n");
