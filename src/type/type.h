@@ -32,6 +32,7 @@ typedef struct			s_vec t_vec;
 typedef struct			s_win t_win;
 typedef struct			s_keyboard t_keyboard;
 typedef struct			s_map t_map;
+typedef struct			s_find t_find;
 
 typedef void (*			t_free_func)(
 	t_cub_context	*cubx,

@@ -83,6 +83,16 @@ struct s_map
 	t_img	img;
 };
 
+struct s_find
+{
+	bool	we;
+	bool	no;
+	bool	ea;
+	bool	so;
+	bool	f;
+	bool	c;
+};
+
 
 struct s_cub_context
 {
@@ -94,6 +104,7 @@ struct s_cub_context
 	t_color					color_f;
 	t_color					color_c;
 	t_map					map;
+	t_find					find;
 	t_list					*lst_map;
 };
 

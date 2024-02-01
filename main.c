@@ -63,6 +63,7 @@ int	main(int argc, char **argv)
 			printf("|%s|\n", cubx.map.map[i]);
 			i++;
 		}
+		printf("cubx.img[0].img = %p\ncubx.img[1].img = %p\ncubx.img[2].img = %p\ncubx.img[3].img = %p\n", cubx.img[0].img, cubx.img[1].img, cubx.img[2].img, cubx.img[3].img);
 		ft_clear(&cubx);
 	}
 	return (0);

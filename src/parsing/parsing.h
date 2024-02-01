@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:42:35 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/29 19:02:28 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/01/31 22:06:18 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ t_uint	remplace_tab_space(t_cub_context *cubx);
 t_uint	create_tab_map(t_cub_context *cubx);
 t_uint	check_valid_map(t_cub_context *cubx);
 t_uint	back_to_normal_map(t_cub_context *cubx);
+t_uint	find_we_no(t_cub_context *cubx, t_str line, int fd);
+t_uint	find_ea_so(t_cub_context *cubx, t_str line, int fd);
 
 #endif
