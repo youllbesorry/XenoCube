@@ -12,14 +12,36 @@
 
 #include "../../xenocube.h"
 
-t_uint	alloc_img(t_cub_context *cubx)
+static void	init_entity_plan(t_cub_entity *entity)
 {
-	cubx->img = cubx->gc->malloc(cubx, sizeof(t_img) * 4, false);
-	if (!cubx->img)
-		return (MALLOC_FAIL);
-	printf("img = %p\n", cubx->img);
-	ft_bzero(cubx->img, sizeof(t_img));
-	return (CONTINUE_PROC);
+	if (entity->char_dir == 'N')
+	{
+		init_dvec(&entity->dir, 0, -1);
+		init_dvec(&entity->plan, -0.66, 0);
+	}
+	else if (entity->char_dir == 'S')
+	{
+		init_dvec(&entity->dir, 0, 1);
+		init_dvec(&entity->plan, 0.66, 0);
+	}
+	else if (entity->char_dir == 'O')
+	{
+		init_dvec(&entity->dir, -1, 0);
+		init_dvec(&entity->plan, 0, 0.66);
+	}
+	else if (entity->char_dir == 'E')
+	{
+		init_dvec(&entity->dir, 1, 0);
+		init_dvec(&entity->plan, 0, -0.66);
+	}
+}
+
+void	init_entity(t_cub_entity *entity, double x, double y)
+{
+	init_dvec(&entity->pos, x, y);
+	entity->w = 16;
+	entity->h = 16;
+	init_entity_plan(entity);
 }
 
 t_uint	init_cub_context(t_cub_context *cubx)
@@ -28,15 +50,5 @@ t_uint	init_cub_context(t_cub_context *cubx)
 	cubx->lst_map = NULL;
 	if (init_gc(cubx) != CONTINUE_PROC)
 		return (CUB_CONTEXT_INIT_FAIL);
-	alloc_img(cubx);
-	// cubx->color_f = (t_cub_textures *)malloc(sizeof(t_cub_color));
-	// if (cubx->color_f == NULL)
-	// 	return (MALLOC_FAIL);
-	// cubx->color_c = (t_cub_textures *)malloc(sizeof(t_cub_color));
-	// if (cubx->color_c == NULL)
-	// 	return (MALLOC_FAIL);
-	// cubx->path = (t_cub_path *)malloc(sizeof(t_cub_path));
-	// if (cubx->path == NULL)
-	// 	return (MALLOC_FAIL);
 	return (CONTINUE_PROC);
 }

@@ -32,6 +32,10 @@ DIR_GARBAGE	=	${DIR_UTILS}garbage_collector/
 
 DIR_CORE	=	${DIR_SRCS}core/
 
+DIR_DISPLAY	=	${DIR_SRCS}display/
+
+DIR_EVENT	=	${DIR_SRCS}event/
+
 DIR_PARS	= 	${DIR_SRCS}parsing/
 
 DIR_MLX		=	minilibx-linux/
@@ -80,7 +84,17 @@ SRCS			=	main.c \
 					${DIR_PARS}create_tab_map.c \
 					${DIR_PARS}check_valid_map.c \
 					${DIR_CORE}ft_clear.c \
+					${DIR_CORE}process.c \
 					${DIR_PARS}pars_file.c \
+					${DIR_UTILS}vec.c \
+					${DIR_UTILS}rect.c \
+					${DIR_UTILS}line.c \
+					${DIR_DISPLAY}display_utils.c \
+					${DIR_DISPLAY}raycast.c \
+					${DIR_DISPLAY}raycast_calcul.c \
+					${DIR_EVENT}move.c \
+					${DIR_EVENT}rotate.c \
+					${DIR_EVENT}event_manager.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}

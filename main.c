@@ -63,6 +63,11 @@ int	main(int argc, char **argv)
 			printf("|%s|\n", cubx.map.map[i]);
 			i++;
 		}
+		mlx_hook(cubx.win.win, 2, 1L << 0, key_press, &cubx);
+		mlx_hook(cubx.win.win, 3, 1L << 1, key_release, &cubx);
+		mlx_hook(cubx.win.win, 17, 1L << 0, quit_loop, &cubx);
+		mlx_loop_hook(cubx.win.mlx, process, &cubx);
+		mlx_loop(cubx.win.mlx);
 		ft_clear(&cubx);
 	}
 	return (0);

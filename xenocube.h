@@ -28,6 +28,12 @@
 # include "src/core/core.h"
 # include "src/utils/list/list.h"
 # include "src/parsing/parsing.h"
+# include "src/event/event.h"
+# include "src/display/display.h"
+# include "src/utils/utils.h"
+
+# define SPEED_ROTATE 0.04
+# define SPEED_MOVE 0.1
 
 int		main(int argc, char **argv);
 

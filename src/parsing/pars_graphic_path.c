@@ -12,22 +12,6 @@
 
 # include "../../xenocube.h"
 
-t_uint	load_img(t_cub_context *cubx, char *path, t_uint i)
-{
-	cubx->img[i].img = mlx_xpm_file_to_image(cubx->win.mlx,
-			path, &(cubx->img[i].img_w),
-			&(cubx->img[i].img_h));
-	if (!cubx->img[i].img)
-		return (printf("%s\n", path), ft_clear(cubx), MALLOC_FAIL);
-	cubx->img[i].addr = mlx_get_data_addr(cubx->img[i].img,
-			&(cubx->img[i].bits_per_pixel),
-			&(cubx->img[i].line_length), &(cubx->img[i].endian));
-	if (!cubx->img[i].addr)
-		return (printf("%s\n", path), MALLOC_FAIL);
-	printf("load_img img->img = %p\n", cubx->img[i].img);
-	return (CONTINUE_PROC);
-}
-
 t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, int fd, t_uint n)
 {
 	t_uint			i;
