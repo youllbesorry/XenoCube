@@ -6,19 +6,30 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:50:41 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/13 12:54:35 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/01 14:31:13 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../xenocube.h"
 
-t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd)
+t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd, t_str line)
 {
 	t_uint	status;
-	t_str	line;
+	t_uint	i;
 
 	status = CONTINUE_PROC;
-	line = get_next_line(fd);
+	i = 0;
+	while (ft_isspace(line[i]) == 1)
+		i++;
+	if (i + 1 < ft_strlen(line))
+	{
+		if (!((line[i] == '1' || line[i] == '0')
+				&& (line[i + 1] == '1' || line[i + 1] == '0')))
+		{
+			free(line);
+			line = get_next_line(fd);
+		}
+	}
 	while (line != NULL)
 	{
 		status = lst_add_back(cubx, &cubx->lst_map, ft_strdup(cubx, line));

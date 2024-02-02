@@ -36,6 +36,8 @@ char	*ft_substr(t_cub_context *cubx, char const *s,
 
 	if (!s)
 		return (NULL);
+	if (start + 1 == len)
+		return (ft_strdup(cubx, ""));
 	if (start > ft_strlen(s))
 		return (ft_strdup(cubx, ""));
 	if (len < ft_strlen(&s[start]))

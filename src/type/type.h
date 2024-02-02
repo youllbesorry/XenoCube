@@ -37,6 +37,7 @@ typedef struct 			s_dvec t_dvec;
 typedef struct 			s_line t_line;
 typedef struct 			s_rect t_rect;
 typedef struct			s_ray t_ray;
+typedef struct			s_find t_find;
 
 typedef void (*			t_free_func)(
 	t_cub_context	*cubx,

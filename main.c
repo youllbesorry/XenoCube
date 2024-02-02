@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 				printf("Error\n");
 			return (ft_clear(&cubx), 0);
 		}
-		printf("cubx.img[0].img = %p\n", cubx.img[0].img);
 		if (check_map(&cubx) != CONTINUE_PROC)
 		{
 			printf("Error\nMap error\n");
@@ -68,6 +67,7 @@ int	main(int argc, char **argv)
 		mlx_hook(cubx.win.win, 17, 1L << 0, quit_loop, &cubx);
 		mlx_loop_hook(cubx.win.mlx, process, &cubx);
 		mlx_loop(cubx.win.mlx);
+		printf("cubx.img[0].img = %p\ncubx.img[1].img = %p\ncubx.img[2].img = %p\ncubx.img[3].img = %p\n", cubx.img[0].img, cubx.img[1].img, cubx.img[2].img, cubx.img[3].img);
 		ft_clear(&cubx);
 	}
 	return (0);

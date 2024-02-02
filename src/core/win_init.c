@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:29:43 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/31 19:02:57 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:52:59 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ t_uint	load_img(t_cub_context *cubx, char *path, t_uint i)
 			path, &(cubx->img[i].img_w),
 			&(cubx->img[i].img_h));
 	if (!cubx->img[i].img)
-		return (printf("%s\n", path), ft_clear(cubx), MALLOC_FAIL);
+		return (printf("Error\n%s init fail\n", path), CONTINUE_PROC);
 	cubx->img[i].addr = mlx_get_data_addr(cubx->img[i].img,
 			&(cubx->img[i].bits_per_pixel),
 			&(cubx->img[i].line_length), &(cubx->img[i].endian));
+	if (!cubx->img[i].addr)
+		return (printf("Error\n%s init fail\n", path), CONTINUE_PROC);
 	printf("load_img img->img = %p\n", cubx->img[i].img);
 	return (CONTINUE_PROC);
 }

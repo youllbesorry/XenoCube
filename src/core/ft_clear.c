@@ -6,7 +6,7 @@
 /*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:52:45 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/31 19:01:21 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/02 15:53:14 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ t_uint	ft_clear(t_cub_context *cubx)
 	while (i < 4)
 	{
 		if (cubx->img[i].img)
-			printf("cubx->img[%d].img = %p\n", i, cubx->img[i].img);
-		if (cubx->img[i].img)
+		{
+			printf("ft_clear cubx->img[%d].img = %p\n", i, cubx->img[i].img);
 			mlx_destroy_image(cubx->win.mlx, cubx->img[i].img);
+			printf("free\n");
+		}
 		i++;
 	}
 	if (cubx->win.renderer.img)

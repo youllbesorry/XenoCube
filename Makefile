@@ -95,6 +95,8 @@ SRCS			=	main.c \
 					${DIR_EVENT}move.c \
 					${DIR_EVENT}rotate.c \
 					${DIR_EVENT}event_manager.c \
+					${DIR_PARS}pars_color.c \
+					${DIR_PARS}find.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}

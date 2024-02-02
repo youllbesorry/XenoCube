@@ -103,7 +103,7 @@ t_uint	find_sizes(t_cub_context *cubx)
 		current = current->next;
 	}
 	cubx->map.w = size_x;
-	cubx->map.h = size_y - 1;
+	cubx->map.h = size_y;
 	printf("\nsize_x = %d\nsize_y = %d\n", cubx->map.w, cubx->map.h);
 	return (CONTINUE_PROC);
 }
