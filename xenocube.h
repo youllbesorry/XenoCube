@@ -35,6 +35,4 @@
 # define SPEED_ROTATE 0.04
 # define SPEED_MOVE 0.1
 
-int		main(int argc, char **argv);
-
 #endif

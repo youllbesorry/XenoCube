@@ -48,19 +48,19 @@ LIBFT_A = $(DIR_LIBFT)$(LIBFT)
 
 MLXLIB_A = $(DIR_MLX)$(LIBMLX)
 
-GREY		= \033[30m
-RED			= \033[31m
-GREEN		= \033[32m
-ORANGE		= \033[33m
-BLUE		= \033[34m
-PURPLE		= \033[35m
-LIGHTBLUE	= \033[36m
-WHITE		= \033[37m
-IRED		= \033[41m
-IWHITE		= \033[47m
-IBLUE		= \033[44m
-IPURPLE		= \033[45m
-END			= \033[0m
+GREY		= 	\033[30m
+RED			= 	\033[31m
+GREEN		= 	\033[32m
+ORANGE		= 	\033[33m
+BLUE		= 	\033[34m
+PURPLE		= 	\033[35m
+LIGHTBLUE	= 	\033[36m
+WHITE		= 	\033[37m
+IRED		= 	\033[41m
+IWHITE		= 	\033[47m
+IBLUE		= 	\033[44m
+IPURPLE		= 	\033[45m
+END			= 	\033[0m
 
 # ---- Files ---- #
 

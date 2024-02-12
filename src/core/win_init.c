@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   win_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:29:43 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/02 15:52:59 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:20:08 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_uint	load_img(t_cub_context *cubx, char *path, t_uint i)
 			&(cubx->img[i].line_length), &(cubx->img[i].endian));
 	if (!cubx->img[i].addr)
 		return (printf("Error\n%s init fail\n", path), CONTINUE_PROC);
-	printf("load_img img->img = %p\n", cubx->img[i].img);
 	return (CONTINUE_PROC);
 }
 
@@ -45,14 +44,12 @@ t_uint	win_init(t_cub_context *cubx, int win_w, int win_h)
 	cubx->win.mlx = mlx_init();
 	if (!cubx->win.mlx)
 		return (MLX_NEW_WIN_FAIL);
-	printf("cubx->win.mlx = %p\n", cubx->win.mlx);
 	cubx->win.w = win_w;
 	cubx->win.h = win_h;
 	cubx->win.win = mlx_new_window(cubx->win.mlx,
 	cubx->win.w, cubx->win.h, "cub3D");
 	if (!cubx->win.win)
 		return (MLX_NEW_WIN_FAIL);
-	printf("cubx->win.win = %p\n", cubx->win.win);
 	new_img(cubx, &(cubx->win.renderer), cubx->win.w, cubx->win.h);
 	if (!cubx->win.renderer.img)
 		return (MLX_NEW_WIN_FAIL);

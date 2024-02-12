@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid_map.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:10:58 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/31 18:02:06 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:21:51 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_uint	check_anomaly(t_cub_context *cubx)
 	y = 0;
 	while (cubx->map.map[y] && y <= cubx->map.h)
 	{
-		printf("%s\n", cubx->map.map[y]);
 		x = 0;
 		while (cubx->map.map[y][x] && x <= cubx->map.w)
 		{

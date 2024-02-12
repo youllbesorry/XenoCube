@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clear.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 16:52:45 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/02 15:53:14 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:20:17 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,7 @@ t_uint	ft_clear(t_cub_context *cubx)
 	while (i < 4)
 	{
 		if (cubx->img[i].img)
-		{
-			printf("ft_clear cubx->img[%d].img = %p\n", i, cubx->img[i].img);
 			mlx_destroy_image(cubx->win.mlx, cubx->img[i].img);
-			printf("free\n");
-		}
 		i++;
 	}
 	if (cubx->win.renderer.img)
@@ -33,5 +29,6 @@ t_uint	ft_clear(t_cub_context *cubx)
 	mlx_destroy_display(cubx->win.mlx);
 	free(cubx->win.mlx);
 	gc_free_all(cubx);
+	exit(0);
 	return (CONTINUE_PROC);
 }
