@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   process.c                                          :+:      :+:    :+:   */
+/*   ft_strcub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 17:51:37 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/02/12 16:44:43 by bfaure           ###   ########lyon.fr   */
+/*   Created: 2024/02/12 17:34:42 by bfaure            #+#    #+#             */
+/*   Updated: 2024/02/12 17:36:56 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../xenocube.h"
 
-int	quit_loop(t_cub_context *cub)
+t_uint	ft_strcub(const char *haystack)
 {
-	mlx_loop_end(cub->win.mlx);
-	return (0);
-}
+	size_t	i;
+	size_t	j;
+	t_str	ber;
 
-int	process(t_cub_context *cub)
-{
-	player_manager(cub);
-	raycast(cub, &cub->player, &cub->map);
-	mlx_put_image_to_window(cub->win.mlx,
-		cub->win.win, cub->win.renderer.img, 0, 0);
+	ber = ".cub\0";
+	i = 0;
+	while (haystack[i])
+	{
+		j = 0;
+		while (haystack[i + j] == ber[j] && ber[j] && haystack[i + j])
+			j++;
+		if (!ber[j] && !haystack[i + j] && i + j > 4 && haystack[i - 1]
+			!= '/')
+			return (1);
+		i++;
+	}
 	return (0);
 }

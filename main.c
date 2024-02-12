@@ -74,6 +74,8 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
+		if (ft_strcub(argv[1]) != 1)
+			return (printf("Error\nWrong file format\n"), 0);
 		if (error_manager(&cubx, argv) != CONTINUE_PROC)
 			ft_clear(&cubx);
 		back_to_normal_map(&cubx);

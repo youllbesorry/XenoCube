@@ -64,39 +64,40 @@ END			= 	\033[0m
 
 # ---- Files ---- #
 
-SRCS			=	main.c \
-					${DIR_GARBAGE}gc_fonc.c \
-					${DIR_GARBAGE}gc_init.c \
-					${DIR_CORE}init_ctx.c \
-					${DIR_PARS}pars_graphic_path.c \
-					${DIR_CORE}win_init.c \
-					${DIR_LST}dlst_add.c \
-					${DIR_LST}dlst_base_func.c \
-					${DIR_LST}dlst_del.c \
-					${DIR_LST}dlst_set_get.c \
-					${DIR_LST}lst_add.c \
-					${DIR_LST}lst_base_func.c \
-					${DIR_LST}lst_del.c \
-					${DIR_LST}lst_set_get.c \
-					${DIR_LST}lst_check.c \
-					${DIR_PARS}cp_map_list.c \
-					${DIR_PARS}check_map.c \
-					${DIR_PARS}create_tab_map.c \
-					${DIR_PARS}check_valid_map.c \
-					${DIR_CORE}ft_clear.c \
-					${DIR_CORE}process.c \
-					${DIR_PARS}pars_file.c \
-					${DIR_UTILS}vec.c \
-					${DIR_UTILS}rect.c \
-					${DIR_UTILS}line.c \
-					${DIR_DISPLAY}display_utils.c \
-					${DIR_DISPLAY}raycast.c \
-					${DIR_DISPLAY}raycast_calcul.c \
-					${DIR_EVENT}move.c \
-					${DIR_EVENT}rotate.c \
-					${DIR_EVENT}event_manager.c \
-					${DIR_PARS}pars_color.c \
-					${DIR_PARS}find.c \
+SRCS		=	main.c \
+				${DIR_GARBAGE}gc_fonc.c \
+				${DIR_GARBAGE}gc_init.c \
+				${DIR_CORE}init_ctx.c \
+				${DIR_PARS}pars_graphic_path.c \
+				${DIR_CORE}win_init.c \
+				${DIR_LST}dlst_add.c \
+				${DIR_LST}dlst_base_func.c \
+				${DIR_LST}dlst_del.c \
+				${DIR_LST}dlst_set_get.c \
+				${DIR_LST}lst_add.c \
+				${DIR_LST}lst_base_func.c \
+				${DIR_LST}lst_del.c \
+				${DIR_LST}lst_set_get.c \
+				${DIR_LST}lst_check.c \
+				${DIR_PARS}cp_map_list.c \
+				${DIR_PARS}check_map.c \
+				${DIR_PARS}create_tab_map.c \
+				${DIR_PARS}check_valid_map.c \
+				${DIR_CORE}ft_clear.c \
+				${DIR_CORE}process.c \
+				${DIR_PARS}pars_file.c \
+				${DIR_UTILS}vec.c \
+				${DIR_UTILS}rect.c \
+				${DIR_UTILS}line.c \
+				${DIR_DISPLAY}display_utils.c \
+				${DIR_DISPLAY}raycast.c \
+				${DIR_DISPLAY}raycast_calcul.c \
+				${DIR_EVENT}move.c \
+				${DIR_EVENT}rotate.c \
+				${DIR_EVENT}event_manager.c \
+				${DIR_PARS}pars_color.c \
+				${DIR_PARS}find.c \
+				${DIR_PARS}ft_strcub.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}
