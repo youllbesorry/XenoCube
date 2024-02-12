@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:50:41 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/01 14:31:13 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/12 16:12:15 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,5 @@ t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd, t_str line)
 		free(line);
 		line = get_next_line(fd);
 	}
-	lst_print(&cubx->lst_map, "%s");
 	return (CONTINUE_PROC);
 }

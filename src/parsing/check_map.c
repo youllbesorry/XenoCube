@@ -28,10 +28,9 @@ t_uint	find_player(t_cub_context *cubx)
 				|| cubx->map.map[i][j] == 'E' || cubx->map.map[i][j] == 'W')
 			{
 				cubx->player.x = (double)j;
-				cubx->player.y = (double)i; // TODO : check if it's good
+				cubx->player.y = (double)i;
 				cubx->player.char_dir = cubx->map.map[i][j];
 				cubx->map.map[i][j] = '0';
-				printf("x = %f\ny = %f\n", cubx->player.x, cubx->player.y);
 				return (CONTINUE_PROC);
 			}
 			j++;
@@ -41,41 +40,51 @@ t_uint	find_player(t_cub_context *cubx)
 	return (MAP_ERROR);
 }
 
-t_uint	remplace_tab_space(t_cub_context *cubx)
+t_uint	is_tab(t_cub_context *cubx,
+	t_str map_data, t_str str_space, t_list *current)
 {
 	t_uint	i;
+
+	i = 0;
+	while (map_data[i] != '\0')
+	{
+		if (map_data[i] == '\t')
+		{
+			str_space = NULL;
+			while (map_data[i] == '\t')
+			{
+				map_data[i] = ' ';
+				str_space = ft_strjoin(cubx, str_space, "   ");
+				if (str_space == NULL)
+					return (MALLOC_FAIL);
+			}
+			current->data = ft_strjoin(cubx, str_space, map_data);
+			if (current->data == NULL)
+				return (MALLOC_FAIL);
+			map_data = (char *)(current)->data;
+			i += 3;
+		}
+		i++;
+	}
+	return (CONTINUE_PROC);
+}
+
+t_uint	remplace_tab_space(t_cub_context *cubx)
+{
 	t_list	*current;
 	t_str	map_data;
 	t_str	str_space;
 
-	i = 0;
 	current = cubx->lst_map;
 	map_data = NULL;
-	printf("\n");
 	str_space = NULL;
 	while (current)
 	{
-		i = 0;
 		map_data = (char *)(current)->data;
-		while (map_data[i] != '\0')
-		{
-			if (map_data[i] == '\t')
-			{
-				str_space = NULL;
-				while (map_data[i] == '\t')
-				{
-					map_data[i] = ' ';
-					str_space = ft_strjoin(cubx, str_space, "   ");
-				}
-				current->data = ft_strjoin(cubx, str_space, map_data);
-				map_data = (char *)(current)->data;
-				i += 3;
-			}
-			i++;
-		}
+		if (is_tab(cubx, map_data, str_space, current) != CONTINUE_PROC)
+			return (MALLOC_FAIL);
 		current = current->next;
 	}
-	lst_print(&cubx->lst_map, "%s");
 	return (CONTINUE_PROC);
 }
 
@@ -105,7 +114,6 @@ t_uint	find_sizes(t_cub_context *cubx)
 	}
 	cubx->map.w = size_x;
 	cubx->map.h = size_y;
-	printf("\nsize_x = %d\nsize_y = %d\n", cubx->map.w, cubx->map.h);
 	return (CONTINUE_PROC);
 }
 

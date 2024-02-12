@@ -17,7 +17,6 @@ static char	*ft_strcpy(char *dst, const char *src, int n, unsigned int len)
 	size_t	i;
 
 	i = 0;
-	(void)len;
 	while (src[i] != '\0')
 	{
 		if (n == 1 && (!ft_isdigit(src[i]) && !ft_isalpha(src[i])))
@@ -27,9 +26,7 @@ static char	*ft_strcpy(char *dst, const char *src, int n, unsigned int len)
 			continue ;
 		}
 		if (src[i] == '\n')
-		{
 			break ;
-		}
 		dst[i] = src[i];
 		i++;
 	}

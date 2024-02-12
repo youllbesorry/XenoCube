@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 19:28:14 by  mchenava         #+#    #+#             */
-/*   Updated: 2024/01/13 11:44:35 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/12 15:39:20 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ t_uint	lst_size(t_list **lst)
 	return (i);
 }
 
-t_uint	lst_remplace(t_cub_context *cubx, t_list **lst, t_uint index, t_str data)
+t_uint	lst_remplace(t_cub_context *cubx,
+	t_list **lst, t_uint index, t_str data)
 {
 	t_list	*tmp;
 	t_uint	i;

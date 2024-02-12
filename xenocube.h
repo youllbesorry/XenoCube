@@ -29,6 +29,4 @@
 # include "src/utils/list/list.h"
 # include "src/parsing/parsing.h"
 
-int		main(int argc, char **argv);
-
 #endif
