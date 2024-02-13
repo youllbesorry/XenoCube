@@ -29,7 +29,7 @@
 # include "src/utils/list/list.h"
 # include "src/parsing/parsing.h"
 # include "src/event/event.h"
-# include "src/display/display.h"
+# include "src/renderer/renderer.h"
 # include "src/utils/utils.h"
 
 # define SPEED_ROTATE 0.04

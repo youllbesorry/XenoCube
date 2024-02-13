@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/31 18:53:53 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:31:16 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../xenocube.h"
+
+int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
 
 void	put_pixel(t_img *img, int x, int y, int color)
 {

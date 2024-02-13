@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.h                                          :+:      :+:    :+:   */
+/*   renderer.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/25 15:12:46 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/31 18:11:32 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:19:29 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DISPLAY_H
-# define DISPLAY_H
+#ifndef RENDERER_H
+# define RENDERER_H
 
 # include "../../xenocube.h"
 
+int		create_trgb(int t, int r, int g, int b);
 char	get_tile(t_map *map, int x, int y);
 void	get_collision(t_ray *ray, t_map *map);
 void	put_pixel(t_img *img, int x, int y, int color);

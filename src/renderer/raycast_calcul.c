@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_calcul.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/02/02 16:10:26 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:18:45 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ void	calculate_wall_tex(t_cub_context *cub, t_ray *ray)
 	ray->ray.p2.y - ray->ray.p1.y);
 	if (ray->ray.p1.y < 0)
 	{
-		ray->text_ray.pos.y = cub->img[ray->side].img_h * 0.5 * \
-		(1 - ((double)cub->win.h / (double)ray->line_h));
+		ray->text_ray.pos.y = (-ray->ray.p1.y * cub->img[ray->side].img_h) \
+		/ (double)ray->line_h;
 		ray->rect_ray.pos.y = 0;
 	}
 	if (ray->ray.p2.y >= cub->win.h)
 	{
-		ray->text_ray.h = (cub->img[ray->side].img_h * \
-		((double)cub->win.h / (double)ray->line_h)) * 1.70;
-		ray->rect_ray.h = cub->win.w - 1;
+		ray->text_ray.h = (cub->win.h * cub->img[ray->side].img_h) \
+		/ (double)ray->line_h;
+		ray->rect_ray.h = cub->win.h - 1;
 	}
 }
 

@@ -10,6 +10,19 @@
 
 ## Please use configure script
 
+GREY		= \033[30m
+RED			= \033[31m
+GREEN		= \033[32m
+ORANGE		= \033[33m
+BLUE		= \033[34m
+PURPLE		= \033[35m
+LIGHTBLUE	= \033[36m
+WHITE		= \033[37m
+IRED		= \033[41m
+IWHITE		= \033[47m
+IBLUE		= \033[44m
+IPURPLE		= \033[45m
+END			= \033[0m
 
 INC	=%%%%
 
@@ -42,13 +55,12 @@ all	: $(NAME) do_configure
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@ && echo "  $@"
 
 $(NAME)	: $(OBJ)
-	ar -r $(NAME) $(OBJ)
-	ranlib $(NAME)
-	cp $(NAME) $(NAME_UNAME)
-
+	@ar -r $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@cp $(NAME) $(NAME_UNAME) && echo "${GREEN}\n* ${NAME} compilation completed !!!\n${END}"
 check: all
 	@test/run_tests.sh
 
@@ -64,6 +76,6 @@ do_configure	:
 	./configure
 
 clean	:
-	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
+	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core 
 
 .PHONY: all check show clean

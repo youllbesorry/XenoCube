@@ -134,8 +134,8 @@ struct s_cub_context
 	t_cub_entity			player;
 	t_win					win;
 	t_keyboard				keyboard;
-	t_color					color_f;
-	t_color					color_c;
+	int						color_f;
+	int						color_c;
 	t_map					map;
 	t_find					find;
 	t_list					*lst_map;

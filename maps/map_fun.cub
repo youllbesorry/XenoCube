@@ -3,8 +3,8 @@ SO ./textures/Metal.xpm
 WE ./textures/Tile.xpm
 EA ./textures/Wood.xpm
 
-F 220,100,0
-C 225,30,0
+F 173,173,173
+C 51,227,255
 
 111111111111
 100000000001      11111

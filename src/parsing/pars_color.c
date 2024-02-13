@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:35:08 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/12 14:59:30 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/13 15:37:13 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,42 @@
 
 t_uint	f_color(t_cub_context *cubx, t_str *color, int bg)
 {
+	t_color	floor;
+
 	if (bg == 'F')
 	{
-		cubx->color_f.r = ft_atoi(color[0]);
-		if (cubx->color_f.r > 255 || cubx->color_f.r < 0)
+		floor.r = ft_atoi(color[0]);
+		if (floor.r > 255 || floor.r < 0)
 			return (BAD_COLOR_FORMAT);
-		cubx->color_f.g = ft_atoi(color[1]);
-		if (cubx->color_f.g > 255 || cubx->color_f.g < 0)
+		floor.g = ft_atoi(color[1]);
+		if (floor.g > 255 || floor.g < 0)
 			return (BAD_COLOR_FORMAT);
-		cubx->color_f.b = ft_atoi(color[2]);
-		if (cubx->color_f.b > 255 || cubx->color_f.b < 0)
+		floor.b = ft_atoi(color[2]);
+		if (floor.b > 255 || floor.b < 0)
 			return (BAD_COLOR_FORMAT);
 	}
+	cubx->color_f = create_trgb(255, floor.r, floor.g, floor.b);
+	printf("color floor (%d, %d, %d)\n", floor.r, floor.g, floor.b);
 	return (CONTINUE_PROC);
 }
 
 t_uint	c_color(t_cub_context *cubx, t_str *color, int bg)
 {
+	t_color	ceiling;
+
 	if (bg == 'C')
 	{
-		cubx->color_c.r = ft_atoi(color[0]);
-		if (cubx->color_c.r > 255 || cubx->color_c.r < 0)
+		ceiling.r = ft_atoi(color[0]);
+		if (ceiling.r > 255 || ceiling.r < 0)
 			return (BAD_COLOR_FORMAT);
-		cubx->color_c.g = ft_atoi(color[1]);
-		if (cubx->color_c.g > 255 || cubx->color_c.g < 0)
+		ceiling.g = ft_atoi(color[1]);
+		if (ceiling.g > 255 || ceiling.g < 0)
 			return (BAD_COLOR_FORMAT);
-		cubx->color_c.b = ft_atoi(color[2]);
-		if (cubx->color_c.b > 255 || cubx->color_c.b < 0)
+		ceiling.b = ft_atoi(color[2]);
+		if (ceiling.b > 255 || ceiling.b < 0)
 			return (BAD_COLOR_FORMAT);
 	}
+	cubx->color_c = create_trgb(255, ceiling.r, ceiling.g, ceiling.b);
 	return (CONTINUE_PROC);
 }
 
@@ -77,9 +84,9 @@ t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
 		return (MALLOC_FAIL);
 	if (check_hex_color(color) != CONTINUE_PROC)
 		return (BAD_COLOR_FORMAT);
-	if (f_color(cubx, color, bg) != CONTINUE_PROC)
+	if (bg == 'F' && f_color(cubx, color, bg) != CONTINUE_PROC)
 		return (BAD_COLOR_FORMAT);
-	if (c_color(cubx, color, bg) != CONTINUE_PROC)
+	if (bg == 'C' && c_color(cubx, color, bg) != CONTINUE_PROC)
 		return (BAD_COLOR_FORMAT);
 	ft_free_tab(cubx, color);
 	return (CONTINUE_PROC);

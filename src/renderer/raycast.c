@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/31 18:49:30 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:49:57 by liurne           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	draw_ray(t_cub_context *cub, t_ray *ray)
 	init_line(&ceiling, &pt, &ray->ray.p1);
 	init_vec(&pt, ray->ray.p1.x, cub->win.h - 1);
 	init_line(&floor, &ray->ray.p2, &pt);
-	draw_line(&cub->win.renderer, &ceiling, 0x000900090);
+	draw_line(&cub->win.renderer, &ceiling, cub->color_c);
 	if (cub->img[ray->side].img)
 		display_texture(&cub->win.renderer, &cub->img[ray->side], \
 		&ray->text_ray, &ray->rect_ray);
@@ -81,7 +81,7 @@ static void	draw_ray(t_cub_context *cub, t_ray *ray)
 		else if (ray->side == 3)
 			draw_line(&cub->win.renderer, &ray->ray, 0x00FF00A0);
 	}
-	draw_line(&cub->win.renderer, &floor, 0x00B090B0);
+	draw_line(&cub->win.renderer, &floor, cub->color_f);
 }
 
 void	raycast(t_cub_context *cub, t_cub_entity *e, t_map *map)
