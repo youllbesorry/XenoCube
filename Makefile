@@ -48,6 +48,8 @@ LIBFT_A 		= $(DIR_LIBFT)$(LIBFT)
 
 MLXLIB_A 		= $(DIR_MLX)$(LIBMLX)
 
+# ---- Colors ---- #
+
 GREY		= \033[30m
 RED			= \033[31m
 GREEN		= \033[32m

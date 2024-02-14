@@ -64,9 +64,7 @@ static t_uint	error_manager(t_cub_context *cubx, t_str *argv)
 int	main(int argc, char **argv)
 {
 	t_cub_context	cubx;
-	//t_uint			status;
 
-	//status = 0;
 	if (argc != 2)
 	{
 		printf("Error\nWrong number of arguments\n");

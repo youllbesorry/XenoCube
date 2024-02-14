@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:50:15 by bfaure            #+#    #+#             */
-/*   Updated: 2024/01/16 17:24:40 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/14 14:54:51 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,28 @@ int			ft_toupper(int c);
 int			ft_tolower(int c);
 int			ft_isspace(int c);
 int			ft_atoi(const char *str);
+int			ft_strcmp(const char *s1, const char *s2);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
-int			ft_strcmp(const char *s1, const char *s2);
 
+char		*ft_strchr(const char *s, int c);
+char		*ft_strrchr(const char *s, int c);
+char		**ft_split_space_tab(char const *s);
 char		*ft_itoa(t_cub_context *cubx, int n);
 char		*ft_strdup(t_cub_context *cubx, const char *str);
 char		*ft_strjoin(t_cub_context *cubx, char *s1, char *s2);
 char		*ft_strfjoin(t_cub_context *cubx, char *s1, char *s2);
-char		*ft_strnjoin(t_cub_context *cubx, char *s1, char *s2, ssize_t n);
-char		*ft_strndup(t_cub_context *cubx, const char *str, unsigned int len);
-char		*ft_strchr(const char *s, int c);
 char		**ft_split(t_cub_context *cubx, char const *s, char c);
-char		*ft_strrchr(const char *s, int c);
-char		**ft_split_space_tab(char const *s);
+char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strdup_char(t_cub_context *cubx, const char *str, char c);
+char		*ft_strnjoin(t_cub_context *cubx, char *s1, char *s2, ssize_t n);
 char		*ft_strtrim(t_cub_context *cubx, char const *s1, char const *set);
+char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char		*ft_strndup(t_cub_context *cubx, const char *str, unsigned int len);
 char		*ft_substr(t_cub_context *cubx, char const *s,
 				unsigned int start, size_t len);
-char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
 size_t		ft_strcspn(const char *s, const char *reject);
+
+t_uint		ft_str_isdigit(t_str str);
 
 #endif

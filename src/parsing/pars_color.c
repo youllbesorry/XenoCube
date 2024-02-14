@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:35:08 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/13 15:37:13 by liurne           ###   ########.fr       */
+/*   Updated: 2024/02/14 15:07:54 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ t_uint	f_color(t_cub_context *cubx, t_str *color, int bg)
 
 	if (bg == 'F')
 	{
+		if (ft_str_isdigit(color[0]) != 1 || ft_str_isdigit(color[1]) != 1
+			|| ft_str_isdigit(color[2]) != 1)
+			return (BAD_COLOR_FORMAT);
 		floor.r = ft_atoi(color[0]);
 		if (floor.r > 255 || floor.r < 0)
 			return (BAD_COLOR_FORMAT);
@@ -29,7 +32,6 @@ t_uint	f_color(t_cub_context *cubx, t_str *color, int bg)
 			return (BAD_COLOR_FORMAT);
 	}
 	cubx->color_f = create_trgb(255, floor.r, floor.g, floor.b);
-	printf("color floor (%d, %d, %d)\n", floor.r, floor.g, floor.b);
 	return (CONTINUE_PROC);
 }
 
@@ -39,6 +41,9 @@ t_uint	c_color(t_cub_context *cubx, t_str *color, int bg)
 
 	if (bg == 'C')
 	{
+		if (!ft_str_isdigit(color[0]) || !ft_str_isdigit(color[1])
+			|| !ft_str_isdigit(color[2]))
+			return (BAD_COLOR_FORMAT);
 		ceiling.r = ft_atoi(color[0]);
 		if (ceiling.r > 255 || ceiling.r < 0)
 			return (BAD_COLOR_FORMAT);

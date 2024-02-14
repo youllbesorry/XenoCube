@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: liurne <liurne@student.42.fr>              +#+  +:+       +#+         #
+#    By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 15:23:52 by bfaure            #+#    #+#              #
-#    Updated: 2024/02/13 15:06:54 by liurne           ###   ########.fr        #
+#    Updated: 2024/02/14 14:58:16 by bfaure           ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,7 @@ SRCS =	ft_isalpha.c\
 		ft_strdup_char.c \
 		ft_split.c\
 		ft_strndup.c\
-		#ft_split_space_tab.c \
+		ft_str_isdigit.c\
 
 DIR_SRCS	= src/
 
