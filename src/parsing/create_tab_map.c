@@ -20,11 +20,6 @@ t_uint	check_end_line(t_cub_context *cubx, t_str map_data, t_list *current)
 	while (current)
 	{
 		map_data = current->data;
-		if (map_data[0] == '\0' || map_data[0] == '\n')
-		{
-			current = current->next;
-			continue ;
-		}
 		cubx->map.map[i] = ft_strndup(cubx,
 				(char *)(current)->data, cubx->map.w);
 		if (!cubx->map.map[i])

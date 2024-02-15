@@ -12,7 +12,7 @@
 
 #include "../../xenocube.h"
 
-t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd, t_str line)
+t_uint	add_map_to_lst(t_cub_context *cubx, t_str line)
 {
 	t_uint	status;
 	t_uint	i;
@@ -27,7 +27,7 @@ t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd, t_str line)
 				&& (line[i + 1] == '1' || line[i + 1] == '0')))
 		{
 			free(line);
-			line = get_next_line(fd);
+			line = get_next_line(cubx->fd);
 		}
 	}
 	while (line != NULL)
@@ -36,7 +36,7 @@ t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd, t_str line)
 		if (status != CONTINUE_PROC)
 			return (status);
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(cubx->fd);
 	}
 	return (CONTINUE_PROC);
 }

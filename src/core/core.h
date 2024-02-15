@@ -139,6 +139,7 @@ struct s_cub_context
 	t_map					map;
 	t_find					find;
 	t_list					*lst_map;
+	int						fd;
 };
 
 t_uint	init_cub_context(t_cub_context *cubx);

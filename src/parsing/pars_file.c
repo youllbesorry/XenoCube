@@ -39,7 +39,7 @@ t_uint	is_finish(t_cub_context *cubx, t_str line)
 	return (0);
 }
 
-t_uint	find_the_path(t_cub_context *cubx, t_str line, int fd)
+t_uint	find_the_path(t_cub_context *cubx, t_str line)
 {
 	t_uint	status;
 
@@ -56,31 +56,30 @@ t_uint	find_the_path(t_cub_context *cubx, t_str line, int fd)
 			return (free(line), status);
 		if (is_finish(cubx, line) == 1)
 		{
-			if (add_map_to_lst(cubx, fd, line) != CONTINUE_PROC)
+			if (add_map_to_lst(cubx, line) != CONTINUE_PROC)
 				return (free(line), MALLOC_FAIL);
 			break ;
 		}
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(cubx->fd);
 	}
 	return (CONTINUE_PROC);
 }
 
 t_uint	pars_file(t_cub_context *cubx, t_str path)
 {
-	int		fd;
 	t_str	line;
 	t_uint	status;
 
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
+	cubx->fd = open(path, O_RDONLY);
+	if (cubx->fd == -1)
 		return (BAD_FD);
-	line = get_next_line(fd);
+	line = get_next_line(cubx->fd);
 	if (line == NULL)
 		return (MALLOC_FAIL);
-	status = find_the_path(cubx, line, fd);
+	status = find_the_path(cubx, line);
 	if (status != CONTINUE_PROC)
 		return (status);
-	close(fd);
+	close(cubx->fd);
 	return (CONTINUE_PROC);
 }

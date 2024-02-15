@@ -22,6 +22,7 @@ t_uint	remove_spaces_path(t_cub_context *cubx, t_str line)
 		if (line[i] == '\n')
 		{
 			printf("Error\nMissing texture\n");
+			free(line);
 			ft_clear(cubx);
 		}
 		i++;

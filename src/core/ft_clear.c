@@ -27,6 +27,7 @@ t_uint	ft_clear(t_cub_context *cubx)
 		mlx_destroy_image(cubx->win.mlx, cubx->win.renderer.img);
 	mlx_destroy_window(cubx->win.mlx, cubx->win.win);
 	mlx_destroy_display(cubx->win.mlx);
+	close(cubx->fd);
 	free(cubx->win.mlx);
 	gc_free_all(cubx);
 	exit(0);

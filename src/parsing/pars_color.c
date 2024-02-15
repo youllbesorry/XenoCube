@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:35:08 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/14 15:07:54 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/15 17:56:25 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,23 @@ t_uint	check_hex_color(t_str *color)
 
 t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
 {
-	t_str			*color;
+	t_str	*color;
+	t_str	tmp;
+	t_uint	i;
 
-	line++;
-	while (ft_isspace((int)*line) && line != NULL)
+	// tmp = NULL;
+	i = 1;
+	while (ft_isspace((int)line[i]) && line[i] != '\0')
 	{
-		if (*line == '\n')
+		if (line[i] == '\n')
 		{
 			printf("Error\nMissing color\n");
 			ft_clear(cubx);
 		}
-		line++;
+		i++;
 	}
-	color = ft_split(cubx, line, ',');
+	tmp = ft_substr(cubx, line, i, ft_strlen(line) - i);
+	color = ft_split(cubx, tmp, ',');
 	if (color == NULL)
 		return (MALLOC_FAIL);
 	if (check_hex_color(color) != CONTINUE_PROC)
@@ -93,6 +97,5 @@ t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
 		return (BAD_COLOR_FORMAT);
 	if (bg == 'C' && c_color(cubx, color, bg) != CONTINUE_PROC)
 		return (BAD_COLOR_FORMAT);
-	ft_free_tab(cubx, color);
-	return (CONTINUE_PROC);
+	return (ft_free_tab(cubx, color), CONTINUE_PROC);
 }

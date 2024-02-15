@@ -16,7 +16,7 @@
 t_uint	pars_file(t_cub_context *cubx, t_str path);
 t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, t_uint n);
 t_uint	check_map(t_cub_context *cubx);
-t_uint	add_map_to_lst(t_cub_context *cubx, t_uint fd, t_str line);
+t_uint	add_map_to_lst(t_cub_context *cubx, t_str line);
 t_uint	find_sizes(t_cub_context *cubx);
 t_uint	remplace_tab_space(t_cub_context *cubx);
 t_uint	create_tab_map(t_cub_context *cubx);
