@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast_calcul.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/02/13 15:18:45 by liurne           ###   ########.fr       */
+/*   Updated: 2024/02/16 16:14:25 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	calculate_ray_height(t_cub_context *cub, t_ray *ray, t_cub_entity *e)
 		+ (1 - ray->step.x) * 0.5) / ray->direction.x) * ray->direction.y;
 	ray->wall_x -= floor((ray->wall_x));
 	calculate_wall_tex(cub, ray);
-	if (ray->ray.p1.y < 0)
+	if (ray->ray.p1.y < 0 || ray->ray.p1.y >= cub->win.h)
 		ray->ray.p1.y = 0;
-	if (ray->ray.p2.y >= cub->win.h)
+	if (ray->ray.p2.y >= cub->win.h || ray->ray.p2.y < 0)
 		ray->ray.p2.y = cub->win.h - 1;
 }
