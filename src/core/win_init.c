@@ -6,11 +6,11 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:29:43 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/12 16:44:15 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/21 17:44:11 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	new_img(t_cub_context *cubx, t_img *img, int w, int h)
 {

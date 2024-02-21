@@ -6,11 +6,11 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:46:19 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/12 13:19:25 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/21 17:46:13 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	find_we_no(t_cub_context *cubx, t_str line)
 {

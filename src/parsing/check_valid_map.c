@@ -6,11 +6,11 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:10:58 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/12 16:21:51 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/21 17:46:02 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	check_player_evo(t_cub_context *cubx, t_uint x, t_uint y, t_uint check)
 {

@@ -6,11 +6,11 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:35:08 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/15 17:56:25 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/21 17:46:21 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	f_color(t_cub_context *cubx, t_str *color, int bg)
 {
@@ -76,14 +76,13 @@ t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
 	t_str	tmp;
 	t_uint	i;
 
-	// tmp = NULL;
 	i = 1;
 	while (ft_isspace((int)line[i]) && line[i] != '\0')
 	{
 		if (line[i] == '\n')
 		{
 			printf("Error\nMissing color\n");
-			ft_clear(cubx);
+			return (free(line), ft_clear(cubx));
 		}
 		i++;
 	}

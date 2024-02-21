@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   event_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:01:39 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/31 19:05:56 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:45:45 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 int	key_press(int keycode, t_cub_context *cubx)
 {
