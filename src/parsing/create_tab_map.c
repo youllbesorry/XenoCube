@@ -12,14 +12,13 @@
 
 #include "xenocube.h"
 
-t_uint	check_end_line(t_cub_context *cubx, t_str map_data, t_list *current)
+t_uint	check_end_line(t_cub_context *cubx, t_list *current)
 {
 	t_uint	i;
 
 	i = 0;
 	while (current)
 	{
-		map_data = current->data;
 		cubx->map.map[i] = ft_strndup(cubx,
 				(char *)(current)->data, cubx->map.w);
 		if (!cubx->map.map[i])
@@ -34,14 +33,12 @@ t_uint	check_end_line(t_cub_context *cubx, t_str map_data, t_list *current)
 t_uint	create_tab_map(t_cub_context *cubx)
 {
 	t_list	*current;
-	char	*map_data;
 
 	current = cubx->lst_map;
-	map_data = NULL;
 	cubx->map.map = gc_malloc(cubx, sizeof(char *) * (cubx->map.h + 1), false);
 	if (cubx->map.map == NULL)
 		return (MALLOC_FAIL);
-	if (check_end_line(cubx, map_data, current) != CONTINUE_PROC)
+	if (check_end_line(cubx, current) != CONTINUE_PROC)
 		return (MALLOC_FAIL);
 	return (CONTINUE_PROC);
 }

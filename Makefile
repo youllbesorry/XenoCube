@@ -156,7 +156,7 @@ clean			:
 					@ ${RM} ${DIR_OBJS}  && echo "${RED} * clean: object cleared...${END}"
 
 fclean			:	clean fclean_lib
-					@ ${RM} ${NAME} && echo "${RED} * fclean: ${NAME} is cleared...${END}"
+					@ ${RM} ${NAME} && echo "${RED} * fclean: ${NAME} is fully cleared...${END}"
 
 bonus			:	all
 
