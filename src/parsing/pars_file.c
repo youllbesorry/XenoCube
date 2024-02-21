@@ -6,11 +6,11 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:29:41 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/12 15:33:21 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/21 17:46:24 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	is_finish(t_cub_context *cubx, t_str line)
 {
