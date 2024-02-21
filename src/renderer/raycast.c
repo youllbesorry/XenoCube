@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/02/16 16:17:06 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:46:41 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 static void	init_ray(int x, t_cub_entity *e, t_ray *ray, t_cub_context *cub)
 {

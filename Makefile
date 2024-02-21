@@ -22,6 +22,8 @@ LIBMLX		= libmlx.a
 
 # ---- Directories ---- #
 
+HEADER			= ./ 
+
 DIR_OBJS		= .objs/
 
 DIR_SRCS		= src/
@@ -142,7 +144,7 @@ ${NAME}	:	${OBJS}
 
 ${DIR_OBJS}%.o	:	%.c $(LIBFT_A) $(MLXLIB_A)
 					@ $(MKDIR) $(shell dirname $@)
-					@ ${CC} ${CFLAGS}  -c $< -o $@ -I $(DIR_LIBFT) -I ${DIR_MLX} -Iminilibx -Ilibft && echo "  $@" || ${MAKE} sus
+					@ ${CC} ${CFLAGS}  -I $(HEADER) -c $< -o $@ -I $(DIR_LIBFT) -I ${DIR_MLX} -Iminilibx -Ilibft && echo "  $@" || ${MAKE} sus
 
 # ---- Usual Commands ---- #
 

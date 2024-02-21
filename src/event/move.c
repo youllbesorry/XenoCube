@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:01:56 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/02/13 15:17:18 by liurne           ###   ########.fr       */
+/*   Updated: 2024/02/21 17:45:49 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 void	move_forward(t_map *map, t_cub_entity *entity)
 {

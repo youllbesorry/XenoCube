@@ -6,11 +6,11 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:34:42 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/12 17:36:56 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/21 17:46:17 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	ft_strcub(const char *haystack)
 {

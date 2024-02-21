@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 16:12:30 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/01/31 19:00:19 by jcoquard         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:48:00 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 # define UTILS_H
-# include "../../xenocube.h"
+//# include "xenocube.h"
 
 t_vec	vec(int x, int y);
 void	init_vec(t_vec *vec, int x, int y);

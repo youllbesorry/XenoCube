@@ -6,11 +6,11 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:50:41 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/12 16:12:15 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/21 17:46:06 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	add_map_to_lst(t_cub_context *cubx, t_str line)
 {

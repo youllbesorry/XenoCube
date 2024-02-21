@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../xenocube.h"
+#include "xenocube.h"
 
 t_uint	check_end_line(t_cub_context *cubx, t_str map_data, t_list *current)
 {
