@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+         #
+#    By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 15:23:52 by bfaure            #+#    #+#              #
-#    Updated: 2024/02/14 14:58:16 by bfaure           ###   ########lyon.fr    #
+#    Updated: 2024/02/21 18:01:05 by jcoquard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ clean :
 			@rm -rf ${DIR_OBJS} && echo "${RED} * clean: object cleared...${END}"
 
 fclean :	clean
-			rm -rf ${NAME} && echo "${RED} * fclean: ${NAME} is cleared...${END}"
+			rm -rf ${NAME} && echo "${RED} * fclean: ${NAME} is fully cleared...${END}"
 
 re :		fclean
 			$(MAKE) all
