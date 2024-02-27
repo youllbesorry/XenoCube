@@ -29,11 +29,8 @@ static t_uint	init_error(t_cub_context *cubx)
 	return (CONTINUE_PROC);
 }
 
-static t_uint	map_error(t_cub_context *cubx, t_str *argv)
+static void	error_handler(t_cub_context *cubx, t_uint status)
 {
-	t_uint	status;
-
-	status = pars_file(cubx, argv[1]);
 	if (status != CONTINUE_PROC)
 	{
 		if (status == MALLOC_FAIL)
@@ -42,11 +39,34 @@ static t_uint	map_error(t_cub_context *cubx, t_str *argv)
 			printf("Error\nWrong color format\n");
 		else if (status == BAD_FD)
 			printf("Error\nSomething goes wrong with fd\n");
+		else if (status == TOO_MANY_TX_ID)
+			printf("Error\nToo many texture id\n");
+		else if (status == TOO_MANY_CO_ID)
+			printf("Error\nToo many color id\n");
+		else if (status == BAD_TEXTURE_ID)
+			printf("Error\nBad textur color\n");
+		else if (status == BAD_COLOR_ID)
+			printf("Error\nBad color id\n");
 		ft_clear(cubx);
 	}
-	if (check_map(cubx) != CONTINUE_PROC)
+	return ;
+}
+
+static t_uint	map_error(t_cub_context *cubx, t_str *argv)
+{
+	t_uint	status;
+
+	status = pars_file(cubx, argv[1]);
+	error_handler(cubx, status);
+	status = check_map(cubx);
+	if (status != CONTINUE_PROC)
 	{
-		printf("Error\nMap error\n");
+		if (status == MAP_ERROR)
+			printf("Error\nMap error\n");
+		else if (status == PLAYER_ERROR)
+			printf("Error\nSomthing goes wrong with player\n");
+		else if (status == WRONG_CHAR)
+			printf("Error\nWrong char in map\n");
 		ft_clear(cubx);
 	}
 	return (CONTINUE_PROC);

@@ -1,41 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enum.h                                             :+:      :+:    :+:   */
+/*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/09 13:50:37 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/27 20:51:26 by bfaure           ###   ########lyon.fr   */
+/*   Created: 2024/02/27 20:44:54 by bfaure            #+#    #+#             */
+/*   Updated: 2024/02/27 20:49:09 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUM_H
-# define ENUM_H
+#include "xenocube.h"
 
-enum e_error
+bool	is_player(char c)
 {
-	MALLOC_FAIL = 1,
-	LOAD_IMG_FAIL,
-	MLX_INIT_FAIL,
-	WIN_INIT_FAIL,
-	MLX_NEW_WIN_FAIL,
-	MLX_NEW_IMG_FAIL,
-	CONTINUE_PROC,
-	STOP_PROC,
-	MAP_ERROR,
-	BAD_FD,
-	IMG_INIT_FAIL,
-	BAD_COLOR_FORMAT,
-	CUB_CONTEXT_INIT_FAIL,
-	NULL_DATA,
-	INIT_FAIL,
-	TOO_MANY_TX_ID,
-	TOO_MANY_CO_ID,
-	BAD_TEXTURE_ID,
-	BAD_COLOR_ID,
-	PLAYER_ERROR,
-	WRONG_CHAR,
-};
-
-#endif
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+		return (true);
+	return (false);
+}

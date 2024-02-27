@@ -125,6 +125,7 @@ struct s_find
 	bool	so;
 	bool	f;
 	bool	c;
+	t_uint	n;
 };
 
 struct s_cub_context

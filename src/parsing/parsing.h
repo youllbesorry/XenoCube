@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: liurne <liurne@student.42.fr>              +#+  +:+       +#+        */
+/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:42:35 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/13 15:36:29 by liurne           ###   ########.fr       */
+/*   Updated: 2024/02/27 20:47:01 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ t_uint	find_ea_so(t_cub_context *cubx, t_str line);
 t_uint	find_color(t_cub_context *cubx, t_str line);
 t_uint	pars_color(t_cub_context *cubx, t_str line, int bg);
 t_uint	ft_strcub(const char *haystack);
+t_uint	check_char(t_cub_context *cubx);
+bool	is_player(char c);
 
 #endif
