@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:10:58 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/21 17:46:02 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/27 20:55:49 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,33 @@ t_uint	check_valid_map(t_cub_context *cubx)
 		}
 	}
 	return (check_anomaly(cubx));
+}
+
+t_uint	check_char(t_cub_context *cubx)
+{
+	t_uint	x;
+	t_uint	y;
+	t_uint	find;
+
+	find = 0;
+	y = 0;
+	while (cubx->map.map[y] && y <= cubx->map.h)
+	{
+		x = 0;
+		while (cubx->map.map[y][x] && x <= cubx->map.w)
+		{
+			if (is_player(cubx->map.map[y][x]))
+				find++;
+			if (find > 1)
+				return (PLAYER_ERROR);
+			if (cubx->map.map[y][x] != 'N' && cubx->map.map[y][x] != 'S'
+				&& cubx->map.map[y][x] != 'W' && cubx->map.map[y][x] != 'E'
+				&& cubx->map.map[y][x] != '1' && cubx->map.map[y][x] != '0'
+				&& cubx->map.map[y][x] != ' ' && cubx->map.map[y][x] != '\n')
+				return (WRONG_CHAR);
+			x++;
+		}
+		y++;
+	}
+	return (CONTINUE_PROC);
 }

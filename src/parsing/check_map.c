@@ -129,6 +129,9 @@ t_uint	check_map(t_cub_context *cubx)
 	status = create_tab_map(cubx);
 	if (status != CONTINUE_PROC)
 		return (status);
+	status = check_char(cubx);
+	if (status != CONTINUE_PROC)
+		return (status);
 	status = find_player(cubx);
 	if (status != CONTINUE_PROC)
 		return (status);
