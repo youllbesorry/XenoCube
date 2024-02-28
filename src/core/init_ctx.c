@@ -24,7 +24,7 @@ static void	init_entity_plan(t_cub_entity *entity)
 		init_dvec(&entity->dir, 0, 1);
 		init_dvec(&entity->plan, 0.66, 0);
 	}
-	else if (entity->char_dir == 'O')
+	else if (entity->char_dir == 'W')
 	{
 		init_dvec(&entity->dir, -1, 0);
 		init_dvec(&entity->plan, 0, 0.66);

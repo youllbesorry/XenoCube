@@ -44,7 +44,7 @@ static void	error_handler(t_cub_context *cubx, t_uint status)
 		else if (status == TOO_MANY_CO_ID)
 			printf("Error\nToo many color id\n");
 		else if (status == BAD_TEXTURE_ID)
-			printf("Error\nBad textur color\n");
+			printf("Error\nBad texture id\n");
 		else if (status == BAD_COLOR_ID)
 			printf("Error\nBad color id\n");
 		ft_clear(cubx);
