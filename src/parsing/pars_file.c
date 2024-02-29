@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 11:29:41 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/28 18:46:59 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/29 16:05:02 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_uint	is_finish(t_cub_context *cubx, t_str line)
 			{
 				if ((line[i] == '1' || line[i] == '0')
 					&& (line[i + 1] == '1' || line[i + 1] == '0'))
-					return (1);
+					return (2);
 			}
 		}
 		return (0);
@@ -54,8 +54,10 @@ t_uint	find_the_path(t_cub_context *cubx, t_str line)
 		status = find_color(cubx, line);
 		if (status != CONTINUE_PROC)
 			return (free(line), status);
-		if (is_finish(cubx, line) == 1)
+		if (is_finish(cubx, line) == 1 || is_finish(cubx, line) == 2)
 		{
+			if (is_finish(cubx, line) == 2)
+				printf("Error\nDefault color applied\n");
 			if (add_map_to_lst(cubx, line) != CONTINUE_PROC)
 				return (free(line), MALLOC_FAIL);
 			break ;

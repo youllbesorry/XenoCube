@@ -40,7 +40,7 @@ t_uint	pars_graphic_path(t_cub_context *cubx, t_str line, t_uint n)
 	if (!path)
 		return (MALLOC_FAIL);
 	if (load_img(cubx, path, n) != CONTINUE_PROC)
-		return (cubx->gc->free(cubx, path), MALLOC_FAIL);
+		return (cubx->gc->free(cubx, path), IMG_INIT_FAIL);
 	if (path)
 		cubx->gc->free(cubx, path);
 	return (CONTINUE_PROC);

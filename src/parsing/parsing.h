@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 12:42:35 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/27 20:47:01 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/29 14:47:58 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ t_uint	find_color(t_cub_context *cubx, t_str line);
 t_uint	pars_color(t_cub_context *cubx, t_str line, int bg);
 t_uint	ft_strcub(const char *haystack);
 t_uint	check_char(t_cub_context *cubx);
+t_uint	is_finish(t_cub_context *cubx, t_str line);
 bool	is_player(char c);
 
 #endif

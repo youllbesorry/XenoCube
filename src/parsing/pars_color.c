@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:35:08 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/21 17:46:21 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/29 16:36:26 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,18 @@ t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
 	t_str	*color;
 	t_str	tmp;
 	t_uint	i;
+	t_uint	j;
 
+	i = 0;
+	j = 0;
+	while (line[i])
+	{
+		if (line[i] == ',')
+			j++;
+		if (j > 2)
+			return (BAD_COLOR_FORMAT);
+		i++;
+	}
 	i = 1;
 	while (ft_isspace((int)line[i]) && line[i] != '\0')
 	{

@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:46:19 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/28 19:00:32 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/02/29 16:36:51 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_uint	find_we_no(t_cub_context *cubx, t_str line)
 
 	while (ft_isspace(*line))
 		line++;
+	if (!*line)
+		return (CONTINUE_PROC);
 	if (line[0] == 'W' && line[1] == 'E')
 	{
 		if (cubx->find.we != 0)
@@ -37,8 +39,7 @@ t_uint	find_we_no(t_cub_context *cubx, t_str line)
 			return (status);
 	}
 	else if (line[0] != ' ' && line[0] != 'F' && line[0] != 'C'
-		&& !(line[0] == 'E' && line[1] == 'A') && cubx->find.no == 0
-		&& cubx->find.we == 0 && cubx->find.so == 0 && cubx->find.ea == 0
+		&& !(line[0] == 'E' && line[1] == 'A') && is_finish(cubx, line) == 0
 		&& !(line[0] == 'S' && line[1] == 'O') && line[0] != '\n')
 		return (BAD_TEXTURE_ID);
 	return (CONTINUE_PROC);
@@ -50,6 +51,8 @@ t_uint	find_ea_so(t_cub_context *cubx, t_str line)
 
 	while (ft_isspace(*line))
 		line++;
+	if (!*line)
+		return (CONTINUE_PROC);
 	if (line[0] == 'E' && line[1] == 'A')
 	{
 		if (cubx->find.ea != 0)
@@ -69,8 +72,7 @@ t_uint	find_ea_so(t_cub_context *cubx, t_str line)
 			return (status);
 	}
 	else if (line[0] != ' ' && line[0] != 'F' && line[0] != 'C'
-		&& !(line[0] == 'W' && line[1] == 'E') && cubx->find.so == 0
-		&& cubx->find.ea == 0 && cubx->find.no == 0 && cubx->find.we == 0
+		&& !(line[0] == 'W' && line[1] == 'E') && is_finish(cubx, line) == 0
 		&& !(line[0] == 'N' && line[1] == 'O') && line[0] != '\n')
 		return (BAD_TEXTURE_ID);
 	return (CONTINUE_PROC);
@@ -80,6 +82,10 @@ t_uint	find_color(t_cub_context *cubx, t_str line)
 {
 	t_uint	status;
 
+	while (ft_isspace(*line))
+		line++;
+	if (!*line)
+		return (CONTINUE_PROC);
 	if (line[0] == 'F')
 	{
 		if (cubx->find.f != 0)
