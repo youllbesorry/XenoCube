@@ -19,7 +19,7 @@ static char	*ft_strcpy(char *dst, const char *src, int n, unsigned int len)
 	i = 0;
 	while (src[i] != '\0')
 	{
-		if (n == 1 && (!ft_isdigit(src[i]) && !ft_isalpha(src[i])))
+		if (n == 1 && ft_isspace(src[i]))
 		{
 			dst[i] = ' ';
 			i++;
