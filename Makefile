@@ -103,6 +103,7 @@ SRCS	=	main.c \
 			${DIR_PARS}find.c \
 			${DIR_PARS}ft_strcub.c \
 			${DIR_PARS}check_player.c \
+			${DIR_UTILS}parsing_utils.c \
 
 
 OBJS = ${addprefix ${DIR_OBJS},${SRCS:.c=.o}}

@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:50:37 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/27 20:51:26 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/03/01 12:46:54 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ enum e_error
 	INIT_FAIL,
 	TOO_MANY_TX_ID,
 	TOO_MANY_CO_ID,
-	BAD_TEXTURE_ID,
-	BAD_COLOR_ID,
+	BAD_ID,
 	PLAYER_ERROR,
 	WRONG_CHAR,
 };
