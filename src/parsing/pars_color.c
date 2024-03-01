@@ -6,7 +6,7 @@
 /*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 11:35:08 by bfaure            #+#    #+#             */
-/*   Updated: 2024/02/29 16:36:26 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/03/01 13:41:46 by bfaure           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,9 @@ t_uint	check_hex_color(t_str *color)
 	return (CONTINUE_PROC);
 }
 
-t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
+static t_uint	check_commas_and_spaces(t_cub_context *cubx,
+	t_str line, t_str *tmp)
 {
-	t_str	*color;
-	t_str	tmp;
 	t_uint	i;
 	t_uint	j;
 
@@ -93,19 +92,34 @@ t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
 		if (line[i] == '\n')
 		{
 			printf("Error\nMissing color\n");
-			return (free(line), ft_clear(cubx));
+			return (ft_clear(cubx));
 		}
 		i++;
 	}
-	tmp = ft_substr(cubx, line, i, ft_strlen(line) - i);
+	*tmp = ft_substr(cubx, line, i, ft_strlen(line) - i);
+	return (CONTINUE_PROC);
+}
+
+t_uint	pars_color(t_cub_context *cubx, t_str line, int bg)
+{
+	t_str	*color;
+	t_str	tmp;
+	t_uint	status;
+
+	status = check_commas_and_spaces(cubx, line, &tmp);
+	if (status != CONTINUE_PROC)
+		return (status);
 	color = ft_split(cubx, tmp, ',');
 	if (color == NULL)
 		return (MALLOC_FAIL);
 	if (check_hex_color(color) != CONTINUE_PROC)
 		return (BAD_COLOR_FORMAT);
-	if (bg == 'F' && f_color(cubx, color, bg) != CONTINUE_PROC)
-		return (BAD_COLOR_FORMAT);
-	if (bg == 'C' && c_color(cubx, color, bg) != CONTINUE_PROC)
-		return (BAD_COLOR_FORMAT);
-	return (ft_free_tab(cubx, color), CONTINUE_PROC);
+	if (bg == 'F')
+		status = f_color(cubx, color, bg);
+	else if (bg == 'C')
+		status = c_color(cubx, color, bg);
+	else
+		status = BAD_COLOR_FORMAT;
+	ft_free_tab(cubx, color);
+	return (status);
 }
