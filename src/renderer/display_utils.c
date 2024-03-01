@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bfaure <bfaure@student.42lyon.fr>          +#+  +:+       +#+        */
+/*   By: jcoquard <jcoquard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 15:55:13 by jcoquard          #+#    #+#             */
-/*   Updated: 2024/02/21 17:46:32 by bfaure           ###   ########lyon.fr   */
+/*   Updated: 2024/03/01 16:58:02 by jcoquard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	draw_line(t_img *img, t_line *line, int color)
 	int	steps;
 	int	i;
 
+	if (line->p1.x == line->p2.x && line->p1.y == line->p2.y)
+		return ;
 	dx = line->p2.x - line->p1.x;
 	dy = line->p2.y - line->p1.y;
 	if (abs(dx) > abs(dy))
